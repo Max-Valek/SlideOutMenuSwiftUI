@@ -10,9 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @Binding var showMenu: Bool
-    
     @Namespace private var namespace
-    
     @State private var currentTab: HomeTab = .forYou
     
     var body: some View {
@@ -24,6 +22,7 @@ struct HomeView: View {
             
             VStack(spacing: 0) {
                 
+                // header
                 VStack(spacing: 0) {
                     // profile pic, twitter logo
                     HStack {
@@ -73,19 +72,8 @@ struct HomeView: View {
                 .padding(0)
                 .background(Color.theme.white.opacity(0.05))
                 
-                
-                ScrollView(.vertical, showsIndicators: false) {
-                    switch currentTab {
-                    case .forYou:
-                        Text("For You")
-                            .frame(width: getRect().width, height: getRect().height)
-                            .transition(.move(edge: .leading))
-                    case .following:
-                        Text("Following")
-                            .frame(width: getRect().width, height: getRect().height)
-                            .transition(.move(edge: .trailing))
-                    }
-                }
+                // tweets
+                content
                 
                 Spacer()
             }
@@ -151,5 +139,22 @@ extension HomeView {
         .font(.subheadline)
         .fontWeight(.semibold)
         .padding(.bottom, 3)
+    }
+    
+    // tweets
+    private var content: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            switch currentTab {
+            case .forYou:
+                Text("For You")
+                    //.frame(width: getRect().width, height: getRect().height)
+                    .frame(maxWidth: .infinity)
+                    .transition(.move(edge: .leading))
+            case .following:
+                Text("Following")
+                    .frame(width: getRect().width, height: getRect().height)
+                    .transition(.move(edge: .trailing))
+            }
+        }
     }
 }

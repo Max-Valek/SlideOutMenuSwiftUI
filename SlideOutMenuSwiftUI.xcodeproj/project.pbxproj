@@ -17,6 +17,9 @@
 		9D7F04802A0EE8E000B976C0 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F047F2A0EE8E000B976C0 /* HomeTab.swift */; };
 		9D7F04822A0EF62200B976C0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F04812A0EF62200B976C0 /* Color.swift */; };
 		9D7F04842A0EFB4100B976C0 /* BaseTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F04832A0EFB4100B976C0 /* BaseTab.swift */; };
+		9D7F04862A0F001A00B976C0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F04852A0F001A00B976C0 /* SearchView.swift */; };
+		9D7F04882A0F002A00B976C0 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F04872A0F002A00B976C0 /* NotificationsView.swift */; };
+		9D7F048A2A0F003600B976C0 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F04892A0F003600B976C0 /* MessagesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		9D7F047F2A0EE8E000B976C0 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		9D7F04812A0EF62200B976C0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		9D7F04832A0EFB4100B976C0 /* BaseTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTab.swift; sourceTree = "<group>"; };
+		9D7F04852A0F001A00B976C0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		9D7F04872A0F002A00B976C0 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		9D7F04892A0F003600B976C0 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,7 @@
 		9D61D6662A0EE072008AEE38 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				9D7F04892A0F003600B976C0 /* MessagesView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 		9D61D6672A0EE07B008AEE38 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				9D7F04872A0F002A00B976C0 /* NotificationsView.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -161,6 +169,7 @@
 		9D61D6682A0EE07D008AEE38 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				9D7F04852A0F001A00B976C0 /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -244,10 +253,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D7F04802A0EE8E000B976C0 /* HomeTab.swift in Sources */,
+				9D7F04882A0F002A00B976C0 /* NotificationsView.swift in Sources */,
+				9D7F04862A0F001A00B976C0 /* SearchView.swift in Sources */,
 				9D61D65B2A0EBE2A008AEE38 /* BaseView.swift in Sources */,
 				9D7F04842A0EFB4100B976C0 /* BaseTab.swift in Sources */,
 				9D7F04822A0EF62200B976C0 /* Color.swift in Sources */,
 				9D61D64E2A0EBCE6008AEE38 /* ContentView.swift in Sources */,
+				9D7F048A2A0F003600B976C0 /* MessagesView.swift in Sources */,
 				9D61D64C2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift in Sources */,
 				9D61D65F2A0ECE57008AEE38 /* HomeView.swift in Sources */,
 				9D61D65D2A0EBEF4008AEE38 /* SideMenu.swift in Sources */,

@@ -49,17 +49,17 @@ struct BaseView: View {
                             .navigationBarHidden(true)
                             .tag(BaseTab.home)
                         
-                        Text("Search")
+                        SearchView()
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
                             .tag(BaseTab.search)
                         
-                        Text("Notifications")
+                        NotificationsView()
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
                             .tag(BaseTab.notifications)
                         
-                        Text("Messages")
+                        MessagesView()
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
                             .tag(BaseTab.messages)
