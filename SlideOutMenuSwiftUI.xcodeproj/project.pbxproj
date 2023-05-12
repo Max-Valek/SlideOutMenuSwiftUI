@@ -59,6 +59,10 @@
 			children = (
 				9D61D64B2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift */,
 				9D61D64D2A0EBCE6008AEE38 /* ContentView.swift */,
+				9D61D6622A0EE032008AEE38 /* Extensions */,
+				9D61D6612A0EE028008AEE38 /* Model */,
+				9D61D6652A0EE059008AEE38 /* Components */,
+				9D61D6602A0EE022008AEE38 /* Core */,
 				9D61D6592A0EBE17008AEE38 /* View */,
 				9D61D64F2A0EBCE7008AEE38 /* Assets.xcassets */,
 				9D61D6512A0EBCE7008AEE38 /* Preview Content */,
@@ -77,11 +81,87 @@
 		9D61D6592A0EBE17008AEE38 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9D61D65A2A0EBE2A008AEE38 /* BaseView.swift */,
-				9D61D65C2A0EBEF4008AEE38 /* SideMenu.swift */,
-				9D61D65E2A0ECE57008AEE38 /* HomeView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9D61D6602A0EE022008AEE38 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9D61D6632A0EE03C008AEE38 /* Base */,
+				9D61D6642A0EE04A008AEE38 /* Home */,
+				9D61D6682A0EE07D008AEE38 /* Search */,
+				9D61D6672A0EE07B008AEE38 /* Notifications */,
+				9D61D6662A0EE072008AEE38 /* Messages */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		9D61D6612A0EE028008AEE38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9D61D6622A0EE032008AEE38 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9D61D6632A0EE03C008AEE38 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9D61D65A2A0EBE2A008AEE38 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		9D61D6642A0EE04A008AEE38 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9D61D65E2A0ECE57008AEE38 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9D61D6652A0EE059008AEE38 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9D61D6692A0EE0B1008AEE38 /* SideMenu */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9D61D6662A0EE072008AEE38 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		9D61D6672A0EE07B008AEE38 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		9D61D6682A0EE07D008AEE38 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		9D61D6692A0EE0B1008AEE38 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9D61D65C2A0EBEF4008AEE38 /* SideMenu.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

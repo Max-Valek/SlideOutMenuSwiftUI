@@ -16,23 +16,24 @@ struct SideMenu: View {
         VStack(alignment: .leading, spacing: 0) {
             
             // pic, name, username, followers, following
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 2) {
                 
                 Image("elon")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 65, height: 65)
+                    .frame(width: 50, height: 50)
                     .clipShape(Circle())
+                    .padding(.bottom, 8)
                 
                 Text("Elon Musk")
-                    .font(.title2)
+                    .font(.title3)
                     .fontWeight(.bold)
                 
                 Text("@ElonMusk")
                     .font(.callout)
                 
                 // followers/following
-                HStack(spacing: 12) {
+                HStack(spacing: 14) {
                     Button {
                         
                     } label: {
@@ -55,7 +56,9 @@ struct SideMenu: View {
                         }
                     }
                 }
+                .font(.subheadline)
                 .foregroundColor(.primary)
+                .padding(.top)
             }
             .padding(.horizontal)
             .padding(.leading)
@@ -67,19 +70,18 @@ struct SideMenu: View {
                 VStack {
                     
                     // profile, lists, topics, ...
-                    VStack(alignment: .leading, spacing: 45) {
+                    VStack(alignment: .leading, spacing: 25) {
                         
                         TabButton(title: "Profile", image: "person")
-                        TabButton(title: "Lists", image: "list.bullet.rectangle")
                         TabButton(title: "Topics", image: "text.bubble.rtl")
                         TabButton(title: "Bookmarks", image: "bookmark")
-                        TabButton(title: "Moments", image: "bolt")
-                        TabButton(title: "Purchases", image: "cart")
-                        TabButton(title: "Monetization", image: "dollarsign.square")
+                        TabButton(title: "Lists", image: "list.bullet.rectangle")
+                        TabButton(title: "Twitter Circle", image: "person.2.circle")
+                        TabButton(title: "Follower Requests", image: "person.badge.plus")
                     }
                     .padding()
                     .padding(.leading)
-                    .padding(.top, 35)
+                    //.padding(.top)
                     
                     Divider()
                     
@@ -110,31 +112,25 @@ struct SideMenu: View {
                 }
             }
             
-            // light bulb, qr code
+            // moon button (changing color mode)
             VStack(spacing: 0) {
                 Divider()
                 HStack {
+                    
                     Button {
                         
                     } label: {
-                        Image(systemName: "lightbulb")
+                        Image(systemName: "moon.stars")
                             .resizable()
                             .renderingMode(.template)
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 14, height: 14)
+                            .frame(width: 22, height: 22)
                     }
+                    
                     Spacer()
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "qrcode")
-                            .resizable()
-                            .renderingMode(.template)
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 17, height: 17)
-                    }
                 }
                 .padding([.horizontal, .top], 15)
+                .padding(.leading)
                 .foregroundColor(.primary)
             }
             
@@ -164,16 +160,19 @@ struct SideMenu: View {
                 .navigationTitle(title)
             
         } label: {
-            HStack(spacing: 12) {
+            HStack(alignment: .center, spacing: 16) {
                 Image(systemName: image)
+                    //.imageScale(.large)
                     .resizable()
-                    .renderingMode(.template)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 17, height: 17)
+                    //.renderingMode(.template)
+                    //.aspectRatio(contentMode: .fill)
+                    .frame(width: 22, height: 22)
                 
                 Text(title)
+                    .fontWeight(.semibold)
             }
             .foregroundColor(.primary)
+            //.fontWeight(.semibold)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
 
@@ -183,7 +182,7 @@ struct SideMenu: View {
 
 struct SideMenu_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenu(showMenu: .constant(false))
+        SideMenu(showMenu: .constant(true))
     }
 }
 

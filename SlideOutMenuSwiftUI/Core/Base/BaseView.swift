@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+// MARK: - BaseTab enum
+
 enum BaseTab {
     case home, search, notifications, messages
 }
 
+// title and image properties
 extension BaseTab {
     
     var title: String {
@@ -40,8 +43,10 @@ extension BaseTab {
     }
 }
 
+// MARK: - View
+
 struct BaseView: View {
-    
+    // whether to show side menu
     @State var showMenu: Bool = false
     
     // hiding native tab bar
@@ -50,11 +55,9 @@ struct BaseView: View {
     }
     
     @State var currentTab: BaseTab = .home
-    
     // offset for both drag gesture and showing menu
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
-    
     // gesture offset
     @GestureState var gestureOffset: CGFloat = 0
     
@@ -73,6 +76,7 @@ struct BaseView: View {
                 // main tab view
                 VStack(spacing: 0) {
                     
+                    // tabs
                     TabView(selection: $currentTab) {
                         
                         HomeView(showMenu: $showMenu)
@@ -101,6 +105,7 @@ struct BaseView: View {
                         
                         Divider()
                         
+                        // custom tab buttons
                         HStack(spacing: 0) {
                             
                             // tab buttons
@@ -116,6 +121,7 @@ struct BaseView: View {
                     }
                     
                 }
+                // Tab View VStack modifiers
                 .frame(width: getRect().width)
                 // background when menu is showing
                 .overlay(
@@ -135,7 +141,7 @@ struct BaseView: View {
                         }
                 )
             }
-            // max size
+            // max size (width of view + additional width for sidebar
             .frame(width: getRect().width + sidebarWidth)
             .offset(x: -sidebarWidth / 2)
             .offset(x: offset > 0 ? offset : 0)
@@ -227,6 +233,7 @@ struct BaseView: View {
         lastStoredOffset = offset
     }
     
+    // bottom tab button
     @ViewBuilder
     func TabButton(tab: BaseTab) -> some View {
         Button {
@@ -245,6 +252,8 @@ struct BaseView: View {
 
     }
 }
+
+// MARK: - Preview
 
 struct BaseView_Previews: PreviewProvider {
     static var previews: some View {
