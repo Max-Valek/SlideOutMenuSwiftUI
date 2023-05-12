@@ -135,6 +135,7 @@ struct SideMenu: View {
                     }
                 }
                 .padding([.horizontal, .top], 15)
+                .foregroundColor(.primary)
             }
             
         }
@@ -153,7 +154,14 @@ struct SideMenu: View {
     
     @ViewBuilder
     func TabButton(title: String, image: String) -> some View {
-        Button {
+        
+        // for navigation
+        // simple replace button with navigation links
+        
+        NavigationLink {
+            
+            Text("\(title) View")
+                .navigationTitle(title)
             
         } label: {
             HStack(spacing: 12) {
@@ -168,6 +176,7 @@ struct SideMenu: View {
             .foregroundColor(.primary)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+
 
     }
 }
