@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     
+    // for testing
+    let loggedInUser: User
+    
     @Binding var showMenu: Bool
     @Namespace private var namespace
     @State private var currentTab: HomeTab = .forYou
@@ -33,7 +36,7 @@ struct HomeView: View {
                                 showMenu.toggle()
                             }
                         } label: {
-                            Image("elon")
+                            Image(loggedInUser.profileImage ?? "default")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 35, height: 35)
@@ -51,7 +54,7 @@ struct HomeView: View {
                         Spacer()
                         
                         // invisible image for formatting
-                        Image("elon")
+                        Image("default")
                             .resizable()
                             //.aspectRatio(contentMode: .fill)
                             .frame(width: 40, height: 40)
@@ -84,7 +87,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(showMenu: .constant(false))
+        HomeView(loggedInUser: User.elon, showMenu: .constant(false))
     }
 }
 

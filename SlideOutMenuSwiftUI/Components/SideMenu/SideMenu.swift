@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SideMenu: View {
     
+    let loggedInUser: User
+    
     @Binding var showMenu: Bool
     
     var body: some View {
@@ -18,18 +20,18 @@ struct SideMenu: View {
             // pic, name, username, followers, following
             VStack(alignment: .leading, spacing: 2) {
                 
-                Image("elon")
+                Image(loggedInUser.profileImage ?? "default")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .padding(.bottom, 8)
                 
-                Text("Elon Musk")
+                Text(loggedInUser.displayName)
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                Text("@ElonMusk")
+                Text("@\(loggedInUser.username)")
                     .font(.callout)
                     .foregroundColor(Color.theme.lightGray)
                 
@@ -42,7 +44,7 @@ struct SideMenu: View {
                             Text("Following")
                                 .foregroundColor(Color.theme.lightGray)
                         } icon: {
-                            Text("189")
+                            Text("\(loggedInUser.following.count)")
                                 .fontWeight(.bold)
                         }
                     }
@@ -54,7 +56,7 @@ struct SideMenu: View {
                             Text("Followers")
                                 .foregroundColor(Color.theme.lightGray)
                         } icon: {
-                            Text("1.2M")
+                            Text("\(loggedInUser.followers.count)")
                                 .fontWeight(.bold)
                         }
                     }
@@ -166,8 +168,11 @@ struct SideMenu: View {
         
         NavigationLink {
             
-            Text("\(title) View")
-                .navigationTitle(title)
+//            Text("\(title) View")
+//                .navigationTitle(title)
+            if title == "Profile" {
+                ProfileView(user: loggedInUser)
+            }
             
         } label: {
             HStack(alignment: .center, spacing: 16) {
@@ -192,7 +197,7 @@ struct SideMenu: View {
 
 struct SideMenu_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenu(showMenu: .constant(true))
+        SideMenu(loggedInUser: User.elon, showMenu: .constant(true))
     }
 }
 

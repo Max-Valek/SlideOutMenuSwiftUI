@@ -22,6 +22,7 @@
 		9D7F048A2A0F003600B976C0 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F04892A0F003600B976C0 /* MessagesView.swift */; };
 		9D7F048C2A0F01DB00B976C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F048B2A0F01DB00B976C0 /* User.swift */; };
 		9D7F048E2A0F01F700B976C0 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F048D2A0F01F700B976C0 /* Tweet.swift */; };
+		9D7F04912A0F082900B976C0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F04902A0F082900B976C0 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		9D7F04892A0F003600B976C0 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		9D7F048B2A0F01DB00B976C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9D7F048D2A0F01F700B976C0 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		9D7F04902A0F082900B976C0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				9D61D6632A0EE03C008AEE38 /* Base */,
+				9D7F048F2A0F081800B976C0 /* Profile */,
 				9D61D6642A0EE04A008AEE38 /* Home */,
 				9D61D6682A0EE07D008AEE38 /* Search */,
 				9D61D6672A0EE07B008AEE38 /* Notifications */,
@@ -186,6 +189,14 @@
 				9D61D65C2A0EBEF4008AEE38 /* SideMenu.swift */,
 			);
 			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		9D7F048F2A0F081800B976C0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9D7F04902A0F082900B976C0 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 				9D7F048C2A0F01DB00B976C0 /* User.swift in Sources */,
 				9D61D64C2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift in Sources */,
 				9D61D65F2A0ECE57008AEE38 /* HomeView.swift in Sources */,
+				9D7F04912A0F082900B976C0 /* ProfileView.swift in Sources */,
 				9D61D65D2A0EBEF4008AEE38 /* SideMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

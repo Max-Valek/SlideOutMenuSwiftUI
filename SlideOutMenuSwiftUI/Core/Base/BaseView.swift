@@ -11,6 +11,9 @@ import SwiftUI
 // MARK: - View
 
 struct BaseView: View {
+    // for testing
+    var loggedInUser: User = User.elon
+    
     // whether to show side menu
     @State var showMenu: Bool = false
     
@@ -36,7 +39,7 @@ struct BaseView: View {
             HStack(spacing: 0) {
                 
                 // side menu
-                SideMenu(showMenu: $showMenu)
+                SideMenu(loggedInUser: loggedInUser, showMenu: $showMenu)
                 
                 // main tab view
                 VStack(spacing: 0) {
@@ -44,7 +47,7 @@ struct BaseView: View {
                     // tabs
                     TabView(selection: $currentTab) {
                         
-                        HomeView(showMenu: $showMenu)
+                        HomeView(loggedInUser: loggedInUser, showMenu: $showMenu)
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
                             .tag(BaseTab.home)
