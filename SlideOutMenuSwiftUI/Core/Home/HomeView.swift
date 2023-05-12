@@ -21,55 +21,60 @@ struct HomeView: View {
             
             VStack(spacing: 0) {
                 
-                // profile pic, twitter logo
-                HStack {
-                    // profile pic button
-                    Button {
-                        // show menu when profile pic pressed
-                        withAnimation {
-                            showMenu.toggle()
+                VStack {
+                    // profile pic, twitter logo
+                    HStack {
+                        // profile pic button
+                        Button {
+                            // show menu when profile pic pressed
+                            withAnimation {
+                                showMenu.toggle()
+                            }
+                        } label: {
+                            Image("elon")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 35, height: 35)
+                                .clipShape(Circle())
                         }
-                    } label: {
+                        
+                        Spacer()
+                        
+                        // twitter logo
+                        Image("twitter")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 35, height: 35)
+                        
+                        Spacer()
+                        
+                        // invisible image for formatting
                         Image("elon")
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 35, height: 35)
-                            .clipShape(Circle())
+                            //.aspectRatio(contentMode: .fill)
+                            .frame(width: 40, height: 40)
+                            //.clipShape(Circle())
+                            .opacity(0)
                     }
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
                     
-                    Spacer()
+                    // for you / following tabs
+                    topTabs
                     
-                    // twitter logo
-                    Image("twitter")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 35, height: 35)
-                    
-                    Spacer()
-                    
-                    // invisible image for formatting
-                    Image("elon")
-                        .resizable()
-                        //.aspectRatio(contentMode: .fill)
-                        .frame(width: 40, height: 40)
-                        //.clipShape(Circle())
-                        .opacity(0)
+                    Divider()
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
                 
-                // for you / following tabs
-                topTabs
-                
-                Divider()
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     switch currentTab {
                     case .forYou:
                         Text("For You")
+                            .frame(width: getRect().width, height: getRect().height)
                             .transition(.move(edge: .leading))
                     case .following:
                         Text("Following")
+                            .frame(width: getRect().width, height: getRect().height)
                             .transition(.move(edge: .trailing))
                     }
                 }
