@@ -87,16 +87,16 @@ struct SideMenu: View {
                     //.padding(.top)
                     
                     Divider()
-                        .frame(height: 0.75)
-                        .overlay(Color.theme.lightGray.opacity(0.4))
+                        .frame(height: 1)
+                        .overlay(Color.theme.darkGray.opacity(0.5))
                     
                     TabButton(title: "Twitter Ads", image: "arrow.up.right.square")
                         .padding()
                         .padding(.leading)
                     
                     Divider()
-                        .frame(height: 0.75)
-                        .overlay(Color.theme.lightGray.opacity(0.4))
+                        .frame(height: 1)
+                        .overlay(Color.theme.darkGray.opacity(0.5))
                     
                     // settings and privacy, help center
                     VStack(alignment: .leading, spacing: 30) {
@@ -123,7 +123,7 @@ struct SideMenu: View {
             VStack(spacing: 0) {
                 Divider()
                     .frame(height: 0.75)
-                    .overlay(Color.theme.lightGray.opacity(0.4))
+                    .overlay(Color.theme.darkGray.opacity(0.4))
                 
                 HStack {
                     
@@ -176,7 +176,7 @@ struct SideMenu: View {
                     .resizable()
                     //.renderingMode(.template)
                     //.aspectRatio(contentMode: .fill)
-                    .frame(width: 22, height: 22)
+                    .frame(width: 20, height: 20)
                 
                 Text(title)
                     .fontWeight(.semibold)

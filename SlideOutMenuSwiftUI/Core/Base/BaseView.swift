@@ -70,7 +70,7 @@ struct BaseView: View {
                         
                         Divider()
                             .frame(height: 0.75)
-                            .overlay(Color.theme.lightGray.opacity(0.4))
+                            .overlay(Color.theme.darkGray.opacity(0.4))
                         
                         // custom tab buttons
                         HStack(spacing: 0) {
@@ -124,7 +124,7 @@ struct BaseView: View {
             .navigationBarTitleDisplayMode(.inline)
             // (this is deprecated, change later)
             .navigationBarHidden(true)
-            .background(Color.theme.black.ignoresSafeArea())
+            .background(Color.theme.black.opacity(0.95).ignoresSafeArea())
         }
         
         .animation(.easeOut, value: offset == 0)

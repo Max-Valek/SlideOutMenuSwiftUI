@@ -24,7 +24,7 @@ struct HomeView: View {
             
             VStack(spacing: 0) {
                 
-                VStack {
+                VStack(spacing: 0) {
                     // profile pic, twitter logo
                     HStack {
                         // profile pic button
@@ -67,9 +67,11 @@ struct HomeView: View {
                     
                     Divider()
                         .frame(height: 0.75)
-                        .overlay(Color.theme.lightGray.opacity(0.4))
-                        .padding(-8)
+                        .overlay(Color.theme.darkGray.opacity(0.4))
+                        .padding(0)
                 }
+                .padding(0)
+                .background(Color.theme.white.opacity(0.05))
                 
                 
                 ScrollView(.vertical, showsIndicators: false) {
