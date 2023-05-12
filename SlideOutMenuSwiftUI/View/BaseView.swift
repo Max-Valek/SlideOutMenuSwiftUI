@@ -7,6 +7,39 @@
 
 import SwiftUI
 
+enum BaseTab {
+    case home, search, notifications, messages
+}
+
+extension BaseTab {
+    
+    var title: String {
+        switch self {
+        case .home:
+            return "Home"
+        case .search:
+            return "Search"
+        case .notifications:
+            return "Notifications"
+        case .messages:
+            return "Messages"
+        }
+    }
+    
+    var image: String {
+        switch self {
+        case .home:
+            return "house"
+        case .search:
+            return "magnifyingglass"
+        case .notifications:
+            return "bell"
+        case .messages:
+            return "envelope"
+        }
+    }
+}
+
 struct BaseView: View {
     
     @State var showMenu: Bool = false
@@ -16,7 +49,7 @@ struct BaseView: View {
         UITabBar.appearance().isHidden = true
     }
     
-    @State var currentTab = "house"
+    @State var currentTab: BaseTab = .home
     
     // offset for both drag gesture and showing menu
     @State var offset: CGFloat = 0
@@ -45,22 +78,22 @@ struct BaseView: View {
                         HomeView(showMenu: $showMenu)
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
-                            .tag("house")
+                            .tag(BaseTab.home)
                         
                         Text("Search")
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
-                            .tag("magnifyingglass")
+                            .tag(BaseTab.search)
                         
                         Text("Notifications")
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
-                            .tag("bell")
+                            .tag(BaseTab.notifications)
                         
                         Text("Messages")
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
-                            .tag("envelope")
+                            .tag(BaseTab.messages)
                     }
                     
                     // custom tab bar
@@ -71,13 +104,13 @@ struct BaseView: View {
                         HStack(spacing: 0) {
                             
                             // tab buttons
-                            TabButton(image: "house")
+                            TabButton(tab: BaseTab.home)
                             
-                            TabButton(image: "magnifyingglass")
+                            TabButton(tab: BaseTab.search)
                             
-                            TabButton(image: "bell")
+                            TabButton(tab: BaseTab.notifications)
                             
-                            TabButton(image: "envelope")
+                            TabButton(tab: BaseTab.messages)
                         }
                         .padding(.top, 15)
                     }
@@ -140,18 +173,24 @@ struct BaseView: View {
     func onChange() {
         let sidebarWidth = getRect().width - 90
         
+        /*
+         set offset to:
+         
+         - gesture offset + last stored offset if added up theyre smaller than sidebar width
+         - itself otherwise
+         */
         offset = (gestureOffset != 0) ? (gestureOffset + lastStoredOffset < sidebarWidth ? gestureOffset + lastStoredOffset : offset) : offset
     }
     
     // called when drag gesture ends
     func onEnd(value: DragGesture.Value) {
-        
+        // width of sidebar
         let sidebarWidth = getRect().width - 90
-        
+        // horizontal distance of the drage gesture
         let translation = value.translation.width
         
         withAnimation {
-            
+            // pos when sliding to show menu
             if translation > 0 {
                 // show menu if dragged over halfway
                 if translation > (sidebarWidth / 2) {
@@ -189,18 +228,18 @@ struct BaseView: View {
     }
     
     @ViewBuilder
-    func TabButton(image: String) -> some View {
+    func TabButton(tab: BaseTab) -> some View {
         Button {
             withAnimation {
-                currentTab = image
+                currentTab = tab
             }
         } label: {
-            Image(systemName: image)
+            Image(systemName: tab.image)
                 .resizable()
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 22, height: 22)
-                .foregroundColor(currentTab == image ? .primary : .gray)
+                .foregroundColor(currentTab == tab ? .primary : .gray)
                 .frame(maxWidth: .infinity)
         }
 
