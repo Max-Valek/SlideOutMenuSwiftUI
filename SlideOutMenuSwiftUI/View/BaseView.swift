@@ -22,6 +22,9 @@ struct BaseView: View {
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
     
+    // gesture offset
+    @GestureState var gestureOffset: CGFloat = 0
+    
     var body: some View {
         
         let sidebarWidth = getRect().width - 90
@@ -102,7 +105,15 @@ struct BaseView: View {
             // max size
             .frame(width: getRect().width + sidebarWidth)
             .offset(x: -sidebarWidth / 2)
-            .offset(x: offset)
+            .offset(x: offset > 0 ? offset : 0)
+            // drag gesture
+            .gesture(
+                DragGesture()
+                    .updating($gestureOffset, body: { value, out, _ in
+                        out = value.translation.width
+                    })
+                    .onEnded(onEnd(value:))
+            )
             // no nav title, hide nav bar
             .navigationBarTitleDisplayMode(.inline)
             // (this is deprecated, change later)
@@ -121,6 +132,60 @@ struct BaseView: View {
                 lastStoredOffset = 0
             }
         }
+        .onChange(of: gestureOffset) { newValue in
+            onChange()
+        }
+    }
+    
+    func onChange() {
+        let sidebarWidth = getRect().width - 90
+        
+        offset = (gestureOffset != 0) ? (gestureOffset + lastStoredOffset < sidebarWidth ? gestureOffset + lastStoredOffset : offset) : offset
+    }
+    
+    // called when drag gesture ends
+    func onEnd(value: DragGesture.Value) {
+        
+        let sidebarWidth = getRect().width - 90
+        
+        let translation = value.translation.width
+        
+        withAnimation {
+            
+            if translation > 0 {
+                // show menu if dragged over halfway
+                if translation > (sidebarWidth / 2) {
+                    offset = sidebarWidth
+                    showMenu = true
+                } else {
+                    
+                    // so you cant drag past end of sidebar
+                    if offset == sidebarWidth {
+                        return
+                    }
+                    
+                    offset = 0
+                    showMenu = false
+                }
+            } else {
+                // dismiss menu if dragged over halfway
+                if -translation > (sidebarWidth / 2) {
+                    offset = 0
+                    showMenu = false
+                } else {
+                    
+                    if offset == 0 || !showMenu {
+                        return
+                    }
+                    
+                    offset = sidebarWidth
+                    showMenu = true
+                }
+            }
+        }
+        
+        // store last offset
+        lastStoredOffset = offset
     }
     
     @ViewBuilder
