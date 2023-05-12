@@ -31,6 +31,7 @@ struct SideMenu: View {
                 
                 Text("@ElonMusk")
                     .font(.callout)
+                    .foregroundColor(Color.theme.lightGray)
                 
                 // followers/following
                 HStack(spacing: 14) {
@@ -39,6 +40,7 @@ struct SideMenu: View {
                     } label: {
                         Label {
                             Text("Following")
+                                .foregroundColor(Color.theme.lightGray)
                         } icon: {
                             Text("189")
                                 .fontWeight(.bold)
@@ -50,6 +52,7 @@ struct SideMenu: View {
                     } label: {
                         Label {
                             Text("Followers")
+                                .foregroundColor(Color.theme.lightGray)
                         } icon: {
                             Text("1.2M")
                                 .fontWeight(.bold)
@@ -57,9 +60,9 @@ struct SideMenu: View {
                     }
                 }
                 .font(.subheadline)
-                .foregroundColor(.primary)
                 .padding(.top)
             }
+            .foregroundColor(Color.theme.text)
             .padding(.horizontal)
             .padding(.leading)
             .padding(.bottom)
@@ -84,12 +87,16 @@ struct SideMenu: View {
                     //.padding(.top)
                     
                     Divider()
+                        .frame(height: 0.75)
+                        .overlay(Color.theme.lightGray.opacity(0.4))
                     
                     TabButton(title: "Twitter Ads", image: "arrow.up.right.square")
                         .padding()
                         .padding(.leading)
                     
                     Divider()
+                        .frame(height: 0.75)
+                        .overlay(Color.theme.lightGray.opacity(0.4))
                     
                     // settings and privacy, help center
                     VStack(alignment: .leading, spacing: 30) {
@@ -108,13 +115,16 @@ struct SideMenu: View {
                     .padding()
                     .padding(.leading)
                     .padding(.bottom)
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.theme.text)
                 }
             }
             
             // moon button (changing color mode)
             VStack(spacing: 0) {
                 Divider()
+                    .frame(height: 0.75)
+                    .overlay(Color.theme.lightGray.opacity(0.4))
+                
                 HStack {
                     
                     Button {
@@ -131,7 +141,7 @@ struct SideMenu: View {
                 }
                 .padding([.horizontal, .top], 15)
                 .padding(.leading)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.theme.text)
             }
             
         }
@@ -141,8 +151,8 @@ struct SideMenu: View {
         .frame(width: getRect().width - 90)
         .frame(maxHeight: .infinity)
         .background(
-            Color.primary
-                .opacity(0.04)
+            Color.theme.black
+                //.opacity(0.04)
                 .ignoresSafeArea(.container, edges: .vertical)
         )
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -171,7 +181,7 @@ struct SideMenu: View {
                 Text(title)
                     .fontWeight(.semibold)
             }
-            .foregroundColor(.primary)
+            .foregroundColor(Color.theme.text)
             //.fontWeight(.semibold)
             .frame(maxWidth: .infinity, alignment: .leading)
         }

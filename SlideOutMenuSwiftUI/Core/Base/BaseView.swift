@@ -104,6 +104,8 @@ struct BaseView: View {
                     VStack(spacing: 0) {
                         
                         Divider()
+                            .frame(height: 0.75)
+                            .overlay(Color.theme.lightGray.opacity(0.4))
                         
                         // custom tab buttons
                         HStack(spacing: 0) {
@@ -128,7 +130,7 @@ struct BaseView: View {
                     Rectangle()
                         // shade over main view when sidebar is showing
                         .fill(
-                            Color.primary
+                            Color.theme.text
                                 .opacity(Double((offset / sidebarWidth) / 5))
                         )
                         // ignore tab bar, etc
@@ -157,7 +159,9 @@ struct BaseView: View {
             .navigationBarTitleDisplayMode(.inline)
             // (this is deprecated, change later)
             .navigationBarHidden(true)
+            .background(Color.theme.black.ignoresSafeArea())
         }
+        
         .animation(.easeOut, value: offset == 0)
         .onChange(of: showMenu) { newValue in
             
@@ -246,7 +250,7 @@ struct BaseView: View {
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 22, height: 22)
-                .foregroundColor(currentTab == tab ? .primary : .gray)
+                .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
                 .frame(maxWidth: .infinity)
         }
 
