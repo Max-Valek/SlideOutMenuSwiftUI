@@ -99,7 +99,7 @@ struct BaseView: View {
                         // shade over main view when sidebar is showing
                         .fill(
                             Color.theme.text
-                                .opacity(Double((offset / sidebarWidth) / 5))
+                                .opacity(Double((offset / sidebarWidth) / 10))
                         )
                         // ignore tab bar, etc
                         .ignoresSafeArea(.container, edges: .vertical)
@@ -127,7 +127,7 @@ struct BaseView: View {
             .navigationBarTitleDisplayMode(.inline)
             // (this is deprecated, change later)
             .navigationBarHidden(true)
-            .background(Color.theme.black.opacity(0.95).ignoresSafeArea())
+            .background(Color.theme.black.opacity(0.975).ignoresSafeArea())
         }
         
         .animation(.easeOut, value: offset == 0)

@@ -90,7 +90,7 @@ extension HomeView {
                 .padding(0)
         }
         .padding(0)
-        .background(Color.theme.white.opacity(0.05))
+        .background(Color.theme.white.opacity(0.025))
     }
     // header tabs
     private var topTabs: some View {
@@ -148,14 +148,24 @@ extension HomeView {
         ScrollView(.vertical, showsIndicators: false) {
             switch currentTab {
             case .forYou:
-                Text("For You")
-                    //.frame(width: getRect().width, height: getRect().height)
-                    .frame(maxWidth: .infinity)
-                    .transition(.move(edge: .leading))
+                VStack {
+                    Spacer()
+                    Text("For You")
+                    Spacer()
+                }
+                //.frame(width: getRect().width, height: getRect().height)
+                .frame(maxWidth: .infinity)
+                .transition(.move(edge: .leading))
+                    
             case .following:
-                Text("Following")
-                    .frame(width: getRect().width, height: getRect().height)
-                    .transition(.move(edge: .trailing))
+                VStack {
+                    Spacer()
+                    Text("Following")
+                    Spacer()
+                }
+                //.frame(width: getRect().width, height: getRect().height)
+                .frame(maxWidth: .infinity)
+                .transition(.move(edge: .trailing))
             }
         }
     }
