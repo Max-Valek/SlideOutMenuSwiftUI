@@ -117,6 +117,22 @@ struct ProfileView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 8)
                     
+                    // tabs
+                    HStack {
+                        Spacer()
+                        Text("Tweets")
+                        Spacer()
+                        Text("Replies")
+                        Spacer()
+                        Text("Media")
+                        Spacer()
+                        Text("Likes")
+                        Spacer()
+                    }
+                    .font(.headline)
+                    
+                    Divider()
+                    
                     Spacer()
                 }
                 
