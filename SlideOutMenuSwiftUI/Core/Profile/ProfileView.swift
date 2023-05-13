@@ -59,6 +59,7 @@ struct ProfileView: View {
                     }
                     .padding(.horizontal)
                     
+                    // display name and username
                     VStack(alignment: .leading, spacing: 4) {
                         // display name
                         HStack {
@@ -79,6 +80,18 @@ struct ProfileView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
+                    
+                    // user bio
+                    if let bio = user.bio {
+                        HStack {
+                            Text(bio)
+                                .font(.subheadline)
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                    }
                     
                     Spacer()
                 }
