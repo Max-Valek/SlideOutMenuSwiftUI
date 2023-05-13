@@ -19,65 +19,14 @@ struct HomeView: View {
     var body: some View {
         
         ZStack {
-            
             Color.theme.black
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                
                 // header
-                VStack(spacing: 0) {
-                    // profile pic, twitter logo
-                    HStack {
-                        // profile pic button
-                        Button {
-                            // show menu when profile pic pressed
-                            withAnimation {
-                                showMenu.toggle()
-                            }
-                        } label: {
-                            Image(loggedInUser.profileImage ?? "default")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 35, height: 35)
-                                .clipShape(Circle())
-                        }
-                        
-                        Spacer()
-                        
-                        // twitter logo
-                        Image("twitter")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 35, height: 35)
-                        
-                        Spacer()
-                        
-                        // invisible image for formatting
-                        Image("default")
-                            .resizable()
-                            //.aspectRatio(contentMode: .fill)
-                            .frame(width: 40, height: 40)
-                            //.clipShape(Circle())
-                            .opacity(0)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    
-                    // for you / following tabs
-                    topTabs
-                    
-                    Divider()
-                        .frame(height: 0.75)
-                        .overlay(Color.theme.darkGray.opacity(0.4))
-                        .padding(0)
-                }
-                .padding(0)
-                .background(Color.theme.white.opacity(0.05))
-                
+                header
                 // tweets
                 content
-                
                 Spacer()
             }
             .foregroundColor(Color.theme.text)
@@ -92,7 +41,58 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 extension HomeView {
-    
+    // header
+    private var header: some View {
+        VStack(spacing: 0) {
+            // profile pic, twitter logo
+            HStack {
+                // profile pic button
+                Button {
+                    // show menu when profile pic pressed
+                    withAnimation {
+                        showMenu.toggle()
+                    }
+                } label: {
+                    Image(loggedInUser.profileImage ?? "default")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 35, height: 35)
+                        .clipShape(Circle())
+                }
+                
+                Spacer()
+                
+                // twitter logo
+                Image("twitter")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 35, height: 35)
+                
+                Spacer()
+                
+                // invisible image for formatting
+                Image("default")
+                    .resizable()
+                    //.aspectRatio(contentMode: .fill)
+                    .frame(width: 40, height: 40)
+                    //.clipShape(Circle())
+                    .opacity(0)
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            
+            // for you / following tabs
+            topTabs
+            
+            Divider()
+                .frame(height: 0.75)
+                .overlay(Color.theme.darkGray.opacity(0.4))
+                .padding(0)
+        }
+        .padding(0)
+        .background(Color.theme.white.opacity(0.05))
+    }
+    // header tabs
     private var topTabs: some View {
         HStack {
             Spacer()
@@ -143,7 +143,6 @@ extension HomeView {
         .fontWeight(.semibold)
         .padding(.bottom, 3)
     }
-    
     // tweets
     private var content: some View {
         ScrollView(.vertical, showsIndicators: false) {

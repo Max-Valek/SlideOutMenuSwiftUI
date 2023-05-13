@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - ProfileTab enum
+// MARK: - Enum for profile tabs
 
 enum ProfileTab: CaseIterable {
     case tweets, replies, media, likes
