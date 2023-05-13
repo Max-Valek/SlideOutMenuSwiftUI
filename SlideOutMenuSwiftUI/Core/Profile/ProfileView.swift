@@ -30,6 +30,7 @@ struct ProfileView: View {
                             .frame(height: 100)
                     }
                     
+                    // profile pic and edit profile button
                     HStack(alignment: .center) {
                         Image(user.profileImage ?? "default")
                             .resizable()
@@ -51,15 +52,37 @@ struct ProfileView: View {
                                 .padding(.horizontal, 12)
                                 .background(Color.theme.black)
                                 .clipShape(Capsule())
-                                .padding(1)
-                                .background(Color.theme.darkGray, in: Capsule())
+                                .padding(2)
+                                .background(Color.theme.twitterBlack, in: Capsule())
                         }
                         .padding(.top, 24)
                     }
                     .padding(.horizontal)
                     
+                    VStack(alignment: .leading, spacing: 4) {
+                        // display name
+                        HStack {
+                            Text(user.displayName)
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            
+                            if user.isVerified {
+                                Image(systemName: "checkmark.seal.fill")
+                                    .font(.subheadline)
+                                    .foregroundColor(Color.theme.blue)
+                            }
+                        }
+                        
+                        Text("@\(user.username)")
+                            .font(.subheadline)
+                            .foregroundColor(Color.theme.lightGray)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    
                     Spacer()
                 }
+                
                 
             }
             .ignoresSafeArea()
@@ -69,8 +92,9 @@ struct ProfileView: View {
                 Text(user.displayName)
                 
             }
-            .foregroundColor(Color.theme.text)
+            
         }
+        .foregroundColor(Color.theme.text)
     }
 }
 
