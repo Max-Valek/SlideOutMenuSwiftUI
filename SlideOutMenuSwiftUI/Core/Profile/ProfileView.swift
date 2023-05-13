@@ -120,11 +120,22 @@ struct ProfileView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 8)
                     
-                    // tabs
-                    //profileTabs
+                    // tweets, replies, media, likes tabs
                     tabs
                     
                     Divider()
+                    
+                    // content
+                    switch currentTab {
+                    case .tweets:
+                        Text("Tweets")
+                    case .replies:
+                        Text("Replies")
+                    case .media:
+                        Text("Media")
+                    case .likes:
+                        Text("Likes")
+                    }
                     
                     Spacer()
                 }
@@ -132,12 +143,6 @@ struct ProfileView: View {
                 
             }
             .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                
-                Text(user.displayName)
-                
-            }
             
         }
         .foregroundColor(Color.theme.text)
