@@ -10,7 +10,6 @@ import SwiftUI
 struct SideMenu: View {
     
     let loggedInUser: User
-    
     @Binding var showMenu: Bool
     
     var body: some View {

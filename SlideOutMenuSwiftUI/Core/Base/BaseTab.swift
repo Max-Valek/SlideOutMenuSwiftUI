@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - BaseTab enum
+// MARK: - Enum for nav bar items
 
 enum BaseTab {
     case home, search, notifications, messages
@@ -15,7 +15,6 @@ enum BaseTab {
 
 // title and image properties
 extension BaseTab {
-    
     var title: String {
         switch self {
         case .home:
@@ -28,7 +27,6 @@ extension BaseTab {
             return "Messages"
         }
     }
-    
     var image: String {
         switch self {
         case .home:
