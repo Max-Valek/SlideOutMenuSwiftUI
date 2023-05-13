@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     var user: User
-    
+    @Environment(\.dismiss) var dismiss
     @Namespace private var namespace
     @State private var currentTab: ProfileTab = .tweets
     
@@ -146,12 +146,44 @@ struct ProfileView: View {
             
         }
         .foregroundColor(Color.theme.text)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "arrow.backward")
+                        .font(.subheadline)
+                        .foregroundColor(Color.theme.text)
+                        .padding(8)
+                        .background(Color.theme.black.opacity(0.4), in: Circle())
+                }
+
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.caption)
+                        .foregroundColor(Color.theme.text)
+                        .padding(8)
+                        .background(Color.theme.black.opacity(0.4), in: Circle())
+                }
+
+            }
+        }
+        
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(user: User.doge)
+        NavigationStack {
+            ProfileView(user: User.doge)
+        }
+        
     }
 }
 
