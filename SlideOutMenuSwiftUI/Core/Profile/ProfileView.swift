@@ -80,6 +80,7 @@ struct ProfileView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
+                    .padding(.bottom, 8)
                     
                     // user bio
                     if let bio = user.bio {
@@ -90,8 +91,31 @@ struct ProfileView: View {
                             Spacer()
                         }
                         .padding(.horizontal)
-                        .padding(.vertical, 8)
+                        .padding(.bottom, 8)
                     }
+                    
+                    // following, followers
+                    HStack(spacing: 12) {
+                        
+                        HStack(spacing: 4) {
+                            Text("\(user.following.count)")
+                            
+                            Text("Following")
+                                .foregroundColor(Color.theme.lightGray)
+                        }
+                        
+                        HStack(spacing: 4) {
+                            Text("\(user.followers.count)")
+                            
+                            Text("Followers")
+                                .foregroundColor(Color.theme.lightGray)
+                        }
+                        
+                        Spacer()
+                    }
+                    .font(.subheadline)
+                    .padding(.horizontal)
+                    .padding(.bottom, 8)
                     
                     Spacer()
                 }
