@@ -107,12 +107,12 @@ extension HomeView {
                 // tab underline
                 if currentTab == .forYou {
                     RoundedRectangle(cornerRadius: 2, style: .continuous)
-                        .frame(width: 50, height: 2)
+                        .frame(width: 50, height: 3)
                         .foregroundColor(Color.theme.blue)
                         .matchedGeometryEffect(id: "tab_underline", in: namespace)
                 } else {
                     RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 50, height: 2)
+                        .frame(width: 50, height: 3)
                         .foregroundColor(.clear)
                 }
             }
@@ -128,12 +128,12 @@ extension HomeView {
                 // tab underline
                 if currentTab == .following {
                     RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 50, height: 2)
+                        .frame(width: 50, height: 3)
                         .foregroundColor(Color.theme.blue)
                         .matchedGeometryEffect(id: "tab_underline", in: namespace)
                 } else {
                     RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 50, height: 2)
+                        .frame(width: 50, height: 3)
                         .foregroundColor(.clear)
                 }
             }

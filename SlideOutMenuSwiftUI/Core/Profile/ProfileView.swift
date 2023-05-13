@@ -11,6 +11,9 @@ struct ProfileView: View {
     
     var user: User
     
+    @Namespace private var namespace
+    @State private var currentTab: ProfileTab = .tweets
+    
     var body: some View {
         
         ZStack {
@@ -118,18 +121,8 @@ struct ProfileView: View {
                     .padding(.bottom, 8)
                     
                     // tabs
-                    HStack {
-                        Spacer()
-                        Text("Tweets")
-                        Spacer()
-                        Text("Replies")
-                        Spacer()
-                        Text("Media")
-                        Spacer()
-                        Text("Likes")
-                        Spacer()
-                    }
-                    .font(.headline)
+                    //profileTabs
+                    tabs
                     
                     Divider()
                     
@@ -153,6 +146,42 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(user: User.elon)
+        ProfileView(user: User.doge)
+    }
+}
+
+extension ProfileView {
+    // tweets, replies, media, likes
+    private var tabs: some View {
+        HStack {
+            Spacer()
+            
+            ForEach(ProfileTab.allCases) { tab in
+                VStack {
+                    Text(tab.title)
+                        .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
+                        .onTapGesture {
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                currentTab = tab
+                            }
+                        }
+                    // tab underline
+                    if currentTab == tab {
+                        RoundedRectangle(cornerRadius: 2, style: .continuous)
+                            .frame(width: 50, height: 3)
+                            .foregroundColor(Color.theme.blue)
+                            .matchedGeometryEffect(id: "tab_underline", in: namespace)
+                    } else {
+                        RoundedRectangle(cornerRadius: 5)
+                            .frame(width: 50, height: 3)
+                            .foregroundColor(.clear)
+                    }
+                }
+                Spacer()
+            }
+            .font(.subheadline)
+            .fontWeight(.semibold)
+        }
+        
     }
 }
