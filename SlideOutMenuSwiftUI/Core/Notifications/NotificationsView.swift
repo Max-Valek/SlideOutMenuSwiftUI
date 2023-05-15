@@ -127,7 +127,7 @@ extension NotificationsView {
             case .verified:
                 NotificationsListView(notifications: loggedInUser.verifiedNotifications)
             case .mentions:
-                NotificationsListView(notifications: loggedInUser.notifications)
+                NotificationsListView(notifications: loggedInUser.mentionNotifications)
             }
         }
     }

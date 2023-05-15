@@ -35,6 +35,11 @@ struct User: Identifiable {
         }
         return verified
     }
+    
+    var mentionNotifications: [UserNotification] {
+        let mentions = notifications.filter({ $0.type == .mention })
+        return mentions
+    }
 }
 
 // sample users

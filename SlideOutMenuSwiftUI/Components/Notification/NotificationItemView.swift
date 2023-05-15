@@ -70,6 +70,8 @@ extension NotificationItemView {
                 Text("Retweeted your Tweet")
             case .follow:
                 Text("followed you")
+            case .mention:
+                Text("")
             }
         
             Spacer()

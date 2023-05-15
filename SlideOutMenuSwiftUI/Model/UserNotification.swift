@@ -14,7 +14,7 @@ struct UserNotification: Identifiable {
 }
 
 enum NotificationType {
-    case like, retweet, follow
+    case like, retweet, follow, mention
 }
 
 extension NotificationType {
@@ -27,6 +27,8 @@ extension NotificationType {
             return "arrow.triangle.2.circlepath"
         case .follow:
             return "person.fill"
+        case .mention:
+            return ""
         }
     }
     
@@ -38,6 +40,8 @@ extension NotificationType {
             return Color.green
         case .follow:
             return Color.theme.blue
+        case .mention:
+            return Color.white
         }
     }
 }
