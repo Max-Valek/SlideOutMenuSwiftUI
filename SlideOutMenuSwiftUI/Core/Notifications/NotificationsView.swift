@@ -9,6 +9,11 @@ import SwiftUI
 
 struct NotificationsView: View {
     
+    // for testing
+    let loggedInUser: User
+    
+    @Binding var showMenu: Bool
+    
     var body: some View {
         
         ZStack {
@@ -18,8 +23,9 @@ struct NotificationsView: View {
             
             VStack(spacing: 0) {
                 
-                Text("Notifications")
+                header
                 
+                Spacer()
             }
             .foregroundColor(Color.theme.text)
         }
@@ -28,6 +34,65 @@ struct NotificationsView: View {
 
 struct NotificationsView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsView()
+        NotificationsView(loggedInUser: User.elon, showMenu: .constant(false))
     }
+}
+
+extension NotificationsView {
+    // header
+    private var header: some View {
+        VStack(spacing: 0) {
+            // profile pic, twitter logo
+            HStack(spacing: 20) {
+                // profile pic button
+                Button {
+                    // show menu when profile pic pressed
+                    withAnimation {
+                        showMenu.toggle()
+                    }
+                } label: {
+                    Image(loggedInUser.profileImage ?? "default")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 35, height: 35)
+                        .clipShape(Circle())
+                }
+                
+                // twitter logo
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search Twitter")
+                }
+                .foregroundColor(Color.theme.lightGray)
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(Color.theme.twitterBlack, in: Capsule())
+                
+                // settings button
+                Image(systemName: "gearshape")
+                    .font(.title3)
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            
+            HStack {
+                ForEach(NotificationsTab.allCases, id: \.self) { tab in
+                    Text(tab.title)
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.theme.lightGray)
+                        .padding(.horizontal)
+                }
+            }
+            
+            
+            Divider()
+                .frame(height: 0.75)
+                .overlay(Color.theme.darkGray.opacity(0.4))
+                .padding(0)
+        }
+        .padding(0)
+        .background(Color.theme.white.opacity(0.025))
+    }
+
 }
