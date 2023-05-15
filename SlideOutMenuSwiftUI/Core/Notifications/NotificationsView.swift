@@ -90,7 +90,7 @@ extension NotificationsView {
         .padding(0)
         .background(Color.theme.white.opacity(0.025))
     }
-    // tweets, replies, media, likes
+    // all, verified, mentions
     private var tabs: some View {
         HStack {
             Spacer()

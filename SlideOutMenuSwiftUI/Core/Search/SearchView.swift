@@ -13,6 +13,8 @@ struct SearchView: View {
     let loggedInUser: User
     
     @Binding var showMenu: Bool
+    @Namespace private var namespace
+    @State private var currentTab: SearchTab = .forYou
     
     var body: some View {
         
@@ -76,15 +78,10 @@ extension SearchView {
             .padding(.vertical, 10)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(SearchTab.allCases, id: \.self) { tab in
-                        Text(tab.title)
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.theme.lightGray)
-                            .padding(.horizontal)
-                    }
+                HStack(spacing: 20) {
+                    tabs
                 }
+                .padding(.horizontal)
             }
             
             Divider()
@@ -94,6 +91,36 @@ extension SearchView {
         }
         .padding(0)
         .background(Color.theme.white.opacity(0.025))
+    }
+
+    // all, verified, mentions
+    private var tabs: some View {
+
+            ForEach(SearchTab.allCases, id: \.self) { tab in
+                VStack {
+                    Text(tab.title)
+                        .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
+                        .onTapGesture {
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                currentTab = tab
+                            }
+                        }
+                    // tab underline
+                    if currentTab == tab {
+                        RoundedRectangle(cornerRadius: 2, style: .continuous)
+                            .frame(width: 50, height: 3)
+                            .foregroundColor(Color.theme.blue)
+                            .matchedGeometryEffect(id: "tab_underline", in: namespace)
+                    } else {
+                        RoundedRectangle(cornerRadius: 5)
+                            .frame(width: 50, height: 3)
+                            .foregroundColor(.clear)
+                    }
+                }
+            }
+            .font(.subheadline)
+            .fontWeight(.semibold)
+        
     }
 
 }
