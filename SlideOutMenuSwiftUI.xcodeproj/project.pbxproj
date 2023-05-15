@@ -17,6 +17,7 @@
 		9D22BC252A12B7D0000E4728 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC242A12B7D0000E4728 /* UserNotification.swift */; };
 		9D22BC272A12BA0D000E4728 /* NotificationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC262A12BA0D000E4728 /* NotificationsListView.swift */; };
 		9D22BC292A12BB42000E4728 /* NotificationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC282A12BB42000E4728 /* NotificationItemView.swift */; };
+		9D22BC2B2A12CA8A000E4728 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC2A2A12CA8A000E4728 /* ConversationView.swift */; };
 		9D61D64C2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D61D64B2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift */; };
 		9D61D64E2A0EBCE6008AEE38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D61D64D2A0EBCE6008AEE38 /* ContentView.swift */; };
 		9D61D6502A0EBCE7008AEE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D61D64F2A0EBCE7008AEE38 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		9D22BC242A12B7D0000E4728 /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		9D22BC262A12BA0D000E4728 /* NotificationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListView.swift; sourceTree = "<group>"; };
 		9D22BC282A12BB42000E4728 /* NotificationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItemView.swift; sourceTree = "<group>"; };
+		9D22BC2A2A12CA8A000E4728 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		9D61D6482A0EBCE6008AEE38 /* SlideOutMenuSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenuSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D61D64B2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutMenuSwiftUIApp.swift; sourceTree = "<group>"; };
 		9D61D64D2A0EBCE6008AEE38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				9D7F04892A0F003600B976C0 /* MessagesView.swift */,
 				9D22BC212A12B434000E4728 /* ConversationsListView.swift */,
+				9D22BC2A2A12CA8A000E4728 /* ConversationView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				9D22BC1A2A12A5DD000E4728 /* SearchTab.swift in Sources */,
 				9D7F048C2A0F01DB00B976C0 /* User.swift in Sources */,
 				9D22BC292A12BB42000E4728 /* NotificationItemView.swift in Sources */,
+				9D22BC2B2A12CA8A000E4728 /* ConversationView.swift in Sources */,
 				9D22BC1C2A12A84F000E4728 /* NotificationsTab.swift in Sources */,
 				9D61D64C2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift in Sources */,
 				9D22BC222A12B434000E4728 /* ConversationsListView.swift in Sources */,

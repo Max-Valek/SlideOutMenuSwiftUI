@@ -28,4 +28,19 @@ extension SearchTab {
             return "Entertainment"
         }
     }
+    
+    var index: Int {
+        switch self {
+        case .forYou:
+            return 1
+        case .trending:
+            return 1
+        case .news:
+            return 1
+        case .sports:
+            return 1
+        case .entertainment:
+            return 1
+        }
+    }
 }

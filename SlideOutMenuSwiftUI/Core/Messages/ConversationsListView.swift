@@ -33,36 +33,41 @@ struct ConversationsListView: View {
             
             // conversations
             ForEach(user.conversations) { convo in
-                HStack(alignment: .top, spacing: 16) {
-                    Image(convo.users[0].profileImage ?? "default")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                    
-                    VStack {
-                        // name and username (will have to change for groups)
-                        HStack {
-                            Text(convo.users[0].displayName)
-                                .font(.headline)
-                                .foregroundColor(Color.theme.text)
-                            
-                            Text("@\(convo.users[0].username)")
-                            Spacer()
-                        }
+                
+                NavigationLink {
+                    ConversationView(conversation: convo)
+                } label: {
+                    HStack(alignment: .top, spacing: 16) {
+                        Image(convo.users[0].profileImage ?? "default")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
                         
-                        // description (will have to change)
-                        HStack {
-                            Text("Latest message from @\(convo.users[0].username)")
-                            Spacer()
+                        VStack {
+                            // name and username (will have to change for groups)
+                            HStack {
+                                Text(convo.users[0].displayName)
+                                    .font(.headline)
+                                    .foregroundColor(Color.theme.text)
+                                
+                                Text("@\(convo.users[0].username)")
+                                Spacer()
+                            }
+                            
+                            // description (will have to change)
+                            HStack {
+                                Text("Latest message from @\(convo.users[0].username)")
+                                Spacer()
+                            }
                         }
+                        .font(.subheadline)
+                        .foregroundColor(Color.theme.lightGray)
+                        
+                        Spacer()
                     }
-                    .font(.subheadline)
-                    .foregroundColor(Color.theme.lightGray)
-                    
-                    Spacer()
+                    .padding(.top, 8)
                 }
-                .padding(.top, 8)
             }
         }
         .padding(.horizontal)
