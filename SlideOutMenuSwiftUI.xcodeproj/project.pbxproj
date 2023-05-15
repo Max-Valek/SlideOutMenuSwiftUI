@@ -23,6 +23,7 @@
 		9D22BC312A12E518000E4728 /* NotificationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC302A12E518000E4728 /* NotificationsSettingsView.swift */; };
 		9D22BC332A12E683000E4728 /* MessagesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC322A12E683000E4728 /* MessagesSettingsView.swift */; };
 		9D22BC362A12EC01000E4728 /* NewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC352A12EC01000E4728 /* NewButtonView.swift */; };
+		9D22BC382A12ED25000E4728 /* NewTweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC372A12ED25000E4728 /* NewTweetView.swift */; };
 		9D61D64C2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D61D64B2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift */; };
 		9D61D64E2A0EBCE6008AEE38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D61D64D2A0EBCE6008AEE38 /* ContentView.swift */; };
 		9D61D6502A0EBCE7008AEE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D61D64F2A0EBCE7008AEE38 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		9D22BC302A12E518000E4728 /* NotificationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsView.swift; sourceTree = "<group>"; };
 		9D22BC322A12E683000E4728 /* MessagesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesSettingsView.swift; sourceTree = "<group>"; };
 		9D22BC352A12EC01000E4728 /* NewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButtonView.swift; sourceTree = "<group>"; };
+		9D22BC372A12ED25000E4728 /* NewTweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetView.swift; sourceTree = "<group>"; };
 		9D61D6482A0EBCE6008AEE38 /* SlideOutMenuSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenuSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D61D64B2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutMenuSwiftUIApp.swift; sourceTree = "<group>"; };
 		9D61D64D2A0EBCE6008AEE38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				9D22BC352A12EC01000E4728 /* NewButtonView.swift */,
+				9D22BC372A12ED25000E4728 /* NewTweetView.swift */,
 			);
 			path = NewButton;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				9D22BC222A12B434000E4728 /* ConversationsListView.swift in Sources */,
 				9D61D65F2A0ECE57008AEE38 /* HomeView.swift in Sources */,
 				9D22BC332A12E683000E4728 /* MessagesSettingsView.swift in Sources */,
+				9D22BC382A12ED25000E4728 /* NewTweetView.swift in Sources */,
 				9D7F04912A0F082900B976C0 /* ProfileView.swift in Sources */,
 				9D22BC162A129911000E4728 /* TweetListView.swift in Sources */,
 				9D61D65D2A0EBEF4008AEE38 /* SideMenu.swift in Sources */,

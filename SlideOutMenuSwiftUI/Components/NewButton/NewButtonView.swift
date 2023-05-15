@@ -10,6 +10,8 @@ import SwiftUI
 // Button on the bottom right of the screen (new tweet/message)
 struct NewButtonView: View {
     
+    @State private var showNewTweet: Bool = false
+    
     let icon: String
     
     var body: some View {
@@ -18,6 +20,9 @@ struct NewButtonView: View {
             HStack {
                 Spacer()
                 Button {
+                    if icon == "plus" {
+                        showNewTweet.toggle()
+                    }
                     
                 } label: {
                     Image(systemName: icon)
@@ -29,6 +34,9 @@ struct NewButtonView: View {
             }
             .padding(.trailing)
             .padding(.bottom)
+        }
+        .fullScreenCover(isPresented: $showNewTweet) {
+            NewTweetView()
         }
     }
 }
