@@ -150,7 +150,7 @@ extension HomeView {
             case .forYou:
                 VStack {
                     Spacer()
-                    Text("For You")
+                    TweetView(tweet: Tweet.allTweets[0])
                     Spacer()
                 }
                 //.frame(width: getRect().width, height: getRect().height)

@@ -17,3 +17,10 @@ struct Tweet: Identifiable {
     var replies: [Tweet] = []
     var originalTweetID: UUID?
 }
+
+extension Tweet {
+    
+    static var allTweets: [Tweet] = [
+        Tweet(author: User.doge, text: "This is a sample tweet by the mascot for DogeCoin.")
+    ]
+}
