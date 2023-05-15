@@ -123,11 +123,11 @@ extension NotificationsView {
         ScrollView(.vertical, showsIndicators: false) {
             switch currentTab {
             case .all:
-                NotificationsListView(notifications: loggedInUser.allNotifications)
+                NotificationsListView(notifications: loggedInUser.notifications)
             case .verified:
                 NotificationsListView(notifications: loggedInUser.verifiedNotifications)
             case .mentions:
-                NotificationsListView(notifications: loggedInUser.verifiedNotifications)
+                NotificationsListView(notifications: loggedInUser.notifications)
             }
         }
     }

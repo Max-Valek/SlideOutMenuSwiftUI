@@ -27,8 +27,14 @@ struct User: Identifiable {
     
     var conversations: [Conversation] = []
     
-    var allNotifications: [UserNotification] = []
-    var verifiedNotifications: [UserNotification] = []
+    var notifications: [UserNotification] = []
+    
+    var verifiedNotifications: [UserNotification] {
+        let verified = notifications.filter { notification in
+            return notification.user.isVerified
+        }
+        return verified
+    }
 }
 
 // sample users
@@ -43,7 +49,7 @@ extension User {
             bio: "Owner of Twitter",
             location: "Twitter HQ",
             conversations: Conversation.sampleConversations,
-            allNotifications: UserNotification.sampleAll)
+            notifications: UserNotification.sampleAll)
     
     static var doge: User =
         User(username: "doge",
@@ -57,7 +63,7 @@ extension User {
     static var defaultUser: User =
         User(username: "default",
             displayName: "Default User",
-            isVerified: true,
+            isVerified: false,
             profileImage: "default",
             headerImage: nil,
             bio: "Default user bio",
