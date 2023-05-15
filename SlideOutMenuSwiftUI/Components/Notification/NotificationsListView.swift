@@ -22,7 +22,10 @@ struct NotificationsListView: View {
                 }
                 
             } else {
-                Text("No notifications yet")
+                ScrollView(.vertical, showsIndicators: false) {
+                    Text("No notifications yet")
+                }
+                .frame(maxWidth: .infinity)
             }
         }
         .padding(.top, 8)

@@ -126,13 +126,14 @@ extension NotificationsView {
             switch currentTab {
             case .all:
                 NotificationsListView(notifications: loggedInUser.notifications)
-                    .transition(.move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing))
+                    .transition(.move(edge: .leading))
             case .verified:
                 NotificationsListView(notifications: loggedInUser.verifiedNotifications)
-                    .transition(.move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing))
+                    .transition(
+                        .asymmetric(insertion: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing), removal: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing)) )
             case .mentions:
                 NotificationsListView(notifications: loggedInUser.mentionNotifications)
-                    .transition(.move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing))
+                    .transition(.move(edge: .leading))
             }
         }
     }
