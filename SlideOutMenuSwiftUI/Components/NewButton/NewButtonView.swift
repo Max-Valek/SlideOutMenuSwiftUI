@@ -11,7 +11,7 @@ import SwiftUI
 struct NewButtonView: View {
     
     @State private var showNewTweet: Bool = false
-    
+    @State private var showNewMessage: Bool = false
     let icon: String
     
     var body: some View {
@@ -22,8 +22,9 @@ struct NewButtonView: View {
                 Button {
                     if icon == "plus" {
                         showNewTweet.toggle()
+                    } else if icon == "envelope" {
+                        showNewMessage.toggle()
                     }
-                    
                 } label: {
                     Image(systemName: icon)
                         .font(.title2)
@@ -37,6 +38,9 @@ struct NewButtonView: View {
         }
         .fullScreenCover(isPresented: $showNewTweet) {
             NewTweetView()
+        }
+        .sheet(isPresented: $showNewMessage) {
+            NewMessageView()
         }
     }
 }
