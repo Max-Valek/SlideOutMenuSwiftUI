@@ -14,6 +14,7 @@ struct NotificationsView: View {
     @Binding var showMenu: Bool
     @Namespace private var namespace
     @State private var currentTab: NotificationsTab = .all
+    @State private var previousTab: NotificationsTab = .all
     
     var body: some View {
         
@@ -95,6 +96,7 @@ extension NotificationsView {
                         .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
                         .onTapGesture {
                             withAnimation(.easeIn(duration: 0.25)) {
+                                previousTab = currentTab
                                 currentTab = tab
                             }
                         }
@@ -124,10 +126,13 @@ extension NotificationsView {
             switch currentTab {
             case .all:
                 NotificationsListView(notifications: loggedInUser.notifications)
+                    .transition(.move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing))
             case .verified:
                 NotificationsListView(notifications: loggedInUser.verifiedNotifications)
+                    .transition(.move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing))
             case .mentions:
                 NotificationsListView(notifications: loggedInUser.mentionNotifications)
+                    .transition(.move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing))
             }
         }
     }

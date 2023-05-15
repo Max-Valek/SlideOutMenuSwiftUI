@@ -24,4 +24,15 @@ extension NotificationsTab {
             return "Mentions"
         }
     }
+    
+    var index: Int {
+        switch self {
+        case .all:
+            return 1
+        case .verified:
+            return 2
+        case .mentions:
+            return 3
+        }
+    }
 }
