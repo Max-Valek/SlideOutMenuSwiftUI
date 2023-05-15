@@ -15,6 +15,7 @@ struct NotificationsView: View {
     @Namespace private var namespace
     @State private var currentTab: NotificationsTab = .all
     @State private var previousTab: NotificationsTab = .all
+    @State private var showNotificationsSettings: Bool = false
     
     var body: some View {
         
@@ -28,6 +29,9 @@ struct NotificationsView: View {
                 Spacer()
             }
             .foregroundColor(Color.theme.text)
+        }
+        .fullScreenCover(isPresented: $showNotificationsSettings) {
+            NotificationsSettingsView(loggedInUser: loggedInUser)
         }
     }
 }
@@ -68,9 +72,16 @@ extension NotificationsView {
                 
                 Spacer()
                 
-                // settings button
-                Image(systemName: "gearshape")
-                    .font(.title3)
+                Button {
+                    withAnimation {
+                        showNotificationsSettings.toggle()
+                    }
+                } label: {
+                    // settings button
+                    Image(systemName: "gearshape")
+                        .font(.title3)
+                }
+                
             }
             .padding(.horizontal)
             .padding(.vertical, 10)
