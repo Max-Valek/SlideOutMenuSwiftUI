@@ -41,4 +41,17 @@ extension ProfileTab: Identifiable {
             return "Likes"
         }
     }
+    
+    var index: Int {
+        switch self {
+        case .tweets:
+            return 1
+        case .replies:
+            return 2
+        case .media:
+            return 3
+        case .likes:
+            return 4
+        }
+    }
 }

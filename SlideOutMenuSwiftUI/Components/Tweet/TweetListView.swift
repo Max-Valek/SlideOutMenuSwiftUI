@@ -20,7 +20,10 @@ struct TweetListView: View {
                     Divider()
                 }
             } else {
-                Text("No Tweets Found")
+                ScrollView(.vertical, showsIndicators: false) {
+                    Text("No Tweets found")
+                }
+                .frame(maxWidth: .infinity)
             }
         }
     }

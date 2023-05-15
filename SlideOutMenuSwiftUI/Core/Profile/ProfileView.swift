@@ -13,6 +13,7 @@ struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
     @Namespace private var namespace
     @State private var currentTab: ProfileTab = .tweets
+    @State private var previousTab: ProfileTab = .tweets
     
     var body: some View {
         
@@ -199,6 +200,7 @@ extension ProfileView {
                         .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
                         .onTapGesture {
                             withAnimation(.easeIn(duration: 0.25)) {
+                                previousTab = currentTab
                                 currentTab = tab
                             }
                         }
@@ -227,12 +229,18 @@ extension ProfileView {
         switch currentTab {
         case .tweets:
             TweetListView(tweetList: user.tweets)
+                .transition(.move(edge: .leading))
         case .replies:
             TweetListView(tweetList: user.replies)
+                .transition(
+                    .asymmetric(insertion: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing), removal: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing)) )
         case .media:
             TweetListView(tweetList: user.media)
+                .transition(
+                    .asymmetric(insertion: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing), removal: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing)) )
         case .likes:
             TweetListView(tweetList: user.likedTweets)
+                .transition(.move(edge: .trailing))
         }
     }
 }
