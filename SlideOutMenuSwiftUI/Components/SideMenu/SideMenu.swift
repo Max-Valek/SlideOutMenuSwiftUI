@@ -216,7 +216,7 @@ struct SideMenu: View {
 //            Text("\(title) View")
 //                .navigationTitle(title)
             if title == "Profile" {
-                ProfileView(user: loggedInUser)
+                ProfileView(loggedInUser: loggedInUser, user: loggedInUser)
             }
             
         } label: {

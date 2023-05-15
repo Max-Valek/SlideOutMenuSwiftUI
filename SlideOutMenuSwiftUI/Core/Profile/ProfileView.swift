@@ -9,12 +9,16 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    var loggedInUser: User
     var user: User
     @Environment(\.dismiss) var dismiss
     @Namespace private var namespace
     @State private var currentTab: ProfileTab = .tweets
     @State private var previousTab: ProfileTab = .tweets
     @State private var showHeader: Bool = true
+    
+    // replace this later
+    @State private var isFollowing: Bool = false
     
     var body: some View {
         
@@ -81,7 +85,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ProfileView(user: User.doge)
+            ProfileView(loggedInUser: User.elon, user: User.doge)
         }
         
     }
@@ -111,20 +115,40 @@ extension ProfileView {
             
             Spacer()
             
-            Button {
-                // edit profile pressed
-            } label: {
-                Text("Edit Profile")
-                    .font(.subheadline)
-                    .foregroundColor(Color.theme.text)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 12)
-                    .background(Color.theme.black)
-                    .clipShape(Capsule())
-                    .padding(2)
-                    .background(Color.theme.twitterBlack, in: Capsule())
+            if user.id == loggedInUser.id {
+                Button {
+                    // edit profile pressed
+                } label: {
+                    Text("Edit Profile")
+                        .font(.subheadline)
+                        .foregroundColor(Color.theme.text)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 12)
+                        .background(Color.theme.black)
+                        .clipShape(Capsule())
+                        .padding(2)
+                        .background(Color.theme.twitterBlack, in: Capsule())
+                }
+                .padding(.top, 24)
+            } else {
+                Button {
+                    withAnimation {
+                        isFollowing.toggle()
+                    }
+                } label: {
+                    Text(isFollowing ? "Following" : "Follow")
+                        .font(.subheadline)
+                        .foregroundColor(isFollowing ? Color.theme.text : Color.theme.black)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 24)
+                        .background(isFollowing ? Color.theme.black : Color.theme.text)
+                        .clipShape(Capsule())
+                        .padding(2)
+                        .background(Color.theme.twitterBlack, in: Capsule())
+                }
+                .offset(y: 8)
+                .padding(.top, 24)
             }
-            .padding(.top, 24)
         }
         .padding(.horizontal)
     }

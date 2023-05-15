@@ -24,6 +24,7 @@ struct User: Identifiable {
     var replies: [Tweet] = []
     var media: [Tweet] = []
     var likedTweets: [Tweet] = []
+    var bookmarkedTweets: [Tweet] = []
     
     var conversations: [Conversation] = []
     
