@@ -14,6 +14,7 @@ struct SearchView: View {
     @Binding var showMenu: Bool
     @Namespace private var namespace
     @State private var currentTab: SearchTab = .forYou
+    @State private var showExploreSettings: Bool = false
     
     var body: some View {
         ZStack {
@@ -26,6 +27,9 @@ struct SearchView: View {
                 Spacer()
             }
             .foregroundColor(Color.theme.text)
+        }
+        .fullScreenCover(isPresented: $showExploreSettings) {
+            ExploreSettingsView(loggedInUser: loggedInUser)
         }
     }
 }
@@ -67,8 +71,15 @@ extension SearchView {
                 .background(Color.theme.twitterBlack, in: Capsule())
                 
                 // settings button
-                Image(systemName: "gearshape")
-                    .font(.title3)
+                Button {
+                    withAnimation {
+                        showExploreSettings.toggle()
+                    }
+                } label: {
+                    Image(systemName: "gearshape")
+                        .font(.title3)
+                }
+                
             }
             .padding(.horizontal)
             .padding(.vertical, 10)
