@@ -11,6 +11,8 @@ struct SideMenu: View {
     
     let loggedInUser: User
     @Binding var showMenu: Bool
+    @State private var showProfessionalTools: Bool = false
+    @State private var showSettingsAndSupport: Bool = false
     
     var body: some View {
         
@@ -88,35 +90,79 @@ struct SideMenu: View {
                     //.padding(.top)
                     
                     Divider()
-                        .frame(height: 1)
-                        .overlay(Color.theme.darkGray.opacity(0.5))
                     
-                    TabButton(title: "Twitter Ads", image: "arrow.up.right.square")
-                        .padding()
-                        .padding(.leading)
-                    
-                    Divider()
-                        .frame(height: 1)
-                        .overlay(Color.theme.darkGray.opacity(0.5))
-                    
-                    // settings and privacy, help center
-                    VStack(alignment: .leading, spacing: 30) {
+                    VStack(spacing: 20) {
+                        HStack {
+                            Text("Professional Tools")
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .rotationEffect(showProfessionalTools ? Angle(degrees: 180) : Angle(degrees: 0))
+                                .foregroundColor(showProfessionalTools ? Color.theme.blue : Color.theme.text)
+                        }
+                        .onTapGesture {
+                            withAnimation {
+                                showProfessionalTools.toggle()
+                            }
+                        }
+                        
+                        if showProfessionalTools {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack(spacing: 16) {
+                                    Image(systemName: "arrow.up.forward")
+                                    Text("Twitter for Professionals")
+                                    Spacer()
+                                }
+                                HStack(spacing: 16) {
+                                    Image(systemName: "arrow.up.forward.square")
+                                    Text("Twitter Ads")
+                                    Spacer()
+                                }
+                                HStack(spacing: 16) {
+                                    Image(systemName: "coloncurrencysign.square")
+                                    Text("Monetization")
+                                    Spacer()
+                                }
+                            }
+                        }
                         
                         HStack {
-                            Button("Settings And Privacy") {
-                                
-                            }
+                            Text("Settings and Support")
                             Spacer()
+                            Image(systemName: "chevron.down")
+                                .rotationEffect(showSettingsAndSupport ? Angle(degrees: 180) : Angle(degrees: 0))
+                                .foregroundColor(showSettingsAndSupport ? Color.theme.blue : Color.theme.text)
+                        }
+                        .onTapGesture {
+                            withAnimation {
+                                showSettingsAndSupport.toggle()
+                            }
                         }
                         
-                        Button("Help Center") {
-                            
+                        if showSettingsAndSupport {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack(spacing: 16) {
+                                    Image(systemName: "gearshape")
+                                    Text("Settings and privacy")
+                                    Spacer()
+                                }
+                                HStack(spacing: 16) {
+                                    Image(systemName: "questionmark.circle")
+                                    Text("Help Center")
+                                    Spacer()
+                                }
+                                HStack(spacing: 16) {
+                                    Image(systemName: "cart")
+                                    Text("Purchases")
+                                    Spacer()
+                                }
+                            }
                         }
                     }
-                    .padding()
-                    .padding(.leading)
-                    .padding(.bottom)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
                     .foregroundColor(Color.theme.text)
+                    .padding()
+                    .padding(.horizontal)
                 }
             }
             
