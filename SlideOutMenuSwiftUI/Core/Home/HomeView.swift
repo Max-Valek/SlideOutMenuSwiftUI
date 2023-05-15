@@ -11,7 +11,6 @@ struct HomeView: View {
     
     // for testing
     let loggedInUser: User
-    
     @Binding var showMenu: Bool
     @Namespace private var namespace
     @State private var currentTab: HomeTab = .forYou

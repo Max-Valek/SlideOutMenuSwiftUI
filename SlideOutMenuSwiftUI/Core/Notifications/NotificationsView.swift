@@ -11,25 +11,19 @@ struct NotificationsView: View {
     
     // for testing
     let loggedInUser: User
-    
     @Binding var showMenu: Bool
-    
     @Namespace private var namespace
     @State private var currentTab: NotificationsTab = .all
     
     var body: some View {
         
         ZStack {
-            
             Color.theme.black
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                
                 header
-                
                 content
-                
                 Spacer()
             }
             .foregroundColor(Color.theme.text)

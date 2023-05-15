@@ -11,20 +11,16 @@ struct MessagesView: View {
     
     // for testing
     let loggedInUser: User
-    
     @Binding var showMenu: Bool
     
     var body: some View {
         
         ZStack {
-            
             Color.theme.black
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                
                 header
-                
                 Spacer()
             }
             .foregroundColor(Color.theme.text)

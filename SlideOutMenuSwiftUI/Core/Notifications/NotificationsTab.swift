@@ -7,7 +7,7 @@
 
 import Foundation
 
-// enum for search view tabs
+// enum for notifications view tabs
 
 enum NotificationsTab: CaseIterable {
     case all, verified, mentions

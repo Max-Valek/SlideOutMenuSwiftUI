@@ -11,22 +11,17 @@ struct SearchView: View {
     
     // for testing
     let loggedInUser: User
-    
     @Binding var showMenu: Bool
     @Namespace private var namespace
     @State private var currentTab: SearchTab = .forYou
     
     var body: some View {
-        
         ZStack {
-            
             Color.theme.black
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                
                 header
-                
                 content
                 Spacer()
             }
@@ -94,7 +89,6 @@ extension SearchView {
         .padding(0)
         .background(Color.theme.white.opacity(0.025))
     }
-
     // all, verified, mentions
     private var tabs: some View {
 
@@ -123,7 +117,6 @@ extension SearchView {
             .font(.subheadline)
             .fontWeight(.bold)
     }
-
     // content
     @ViewBuilder
     private var content: some View {

@@ -100,7 +100,6 @@
 				9D61D6612A0EE028008AEE38 /* Model */,
 				9D61D6652A0EE059008AEE38 /* Components */,
 				9D61D6602A0EE022008AEE38 /* Core */,
-				9D61D6592A0EBE17008AEE38 /* View */,
 				9D61D64F2A0EBCE7008AEE38 /* Assets.xcassets */,
 				9D61D6512A0EBCE7008AEE38 /* Preview Content */,
 			);
@@ -113,13 +112,6 @@
 				9D61D6522A0EBCE7008AEE38 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		9D61D6592A0EBE17008AEE38 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9D61D6602A0EE022008AEE38 /* Core */ = {
