@@ -14,6 +14,9 @@ struct NotificationsView: View {
     
     @Binding var showMenu: Bool
     
+    @Namespace private var namespace
+    @State private var currentTab: NotificationsTab = .all
+    
     var body: some View {
         
         ZStack {
@@ -24,6 +27,8 @@ struct NotificationsView: View {
             VStack(spacing: 0) {
                 
                 header
+                
+                content
                 
                 Spacer()
             }
@@ -58,15 +63,15 @@ extension NotificationsView {
                         .clipShape(Circle())
                 }
                 
+                Spacer()
+                
                 // twitter logo
                 HStack {
-                    Image(systemName: "magnifyingglass")
-                    Text("Search Twitter")
+                    Text("Notifications")
+                        .font(.headline)
                 }
-                .foregroundColor(Color.theme.lightGray)
-                .padding(.vertical, 8)
-                .frame(maxWidth: .infinity)
-                .background(Color.theme.twitterBlack, in: Capsule())
+                
+                Spacer()
                 
                 // settings button
                 Image(systemName: "gearshape")
@@ -75,16 +80,7 @@ extension NotificationsView {
             .padding(.horizontal)
             .padding(.vertical, 10)
             
-            HStack {
-                ForEach(NotificationsTab.allCases, id: \.self) { tab in
-                    Text(tab.title)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.theme.lightGray)
-                        .padding(.horizontal)
-                }
-            }
-            
+            tabs
             
             Divider()
                 .frame(height: 0.75)
@@ -94,5 +90,49 @@ extension NotificationsView {
         .padding(0)
         .background(Color.theme.white.opacity(0.025))
     }
-
+    // tweets, replies, media, likes
+    private var tabs: some View {
+        HStack {
+            Spacer()
+            
+            ForEach(NotificationsTab.allCases, id: \.self) { tab in
+                VStack {
+                    Text(tab.title)
+                        .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
+                        .onTapGesture {
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                currentTab = tab
+                            }
+                        }
+                    // tab underline
+                    if currentTab == tab {
+                        RoundedRectangle(cornerRadius: 2, style: .continuous)
+                            .frame(width: 50, height: 3)
+                            .foregroundColor(Color.theme.blue)
+                            .matchedGeometryEffect(id: "tab_underline", in: namespace)
+                    } else {
+                        RoundedRectangle(cornerRadius: 5)
+                            .frame(width: 50, height: 3)
+                            .foregroundColor(.clear)
+                    }
+                }
+                Spacer()
+            }
+            .font(.subheadline)
+            .fontWeight(.semibold)
+        }
+        
+    }
+    // content
+    @ViewBuilder
+    private var content: some View {
+        switch currentTab {
+        case .all:
+            Text("All")
+        case .verified:
+            Text("Verified")
+        case .mentions:
+            Text("Mentions")
+        }
+    }
 }
