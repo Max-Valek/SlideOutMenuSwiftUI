@@ -82,6 +82,8 @@ extension TweetView {
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(Color.theme.darkGray)
+                    .padding(.horizontal)
+                    .padding(.vertical, 4)
             }
         }
     }
