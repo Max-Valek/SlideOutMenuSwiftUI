@@ -12,3 +12,13 @@ struct Conversation: Identifiable {
     var users: [User]
     var messages: [Message] = []
 }
+
+// sample converations
+extension Conversation {
+    
+    static var sampleConversations: [Conversation] = [
+        Conversation(users: [User.doge]),
+        Conversation(users: [User.defaultUser]),
+        Conversation(users: [User.doge, User.defaultUser])
+    ]
+}

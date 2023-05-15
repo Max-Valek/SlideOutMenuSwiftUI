@@ -93,10 +93,7 @@ extension MessagesView {
     }
     // conversations
     private var conversations: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            Text("Conversations")
-            Spacer()
-        }
+        ConversationsListView(user: loggedInUser)
     }
 
 }

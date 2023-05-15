@@ -13,6 +13,7 @@
 		9D22BC1C2A12A84F000E4728 /* NotificationsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC1B2A12A84F000E4728 /* NotificationsTab.swift */; };
 		9D22BC1E2A12B274000E4728 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC1D2A12B274000E4728 /* Conversation.swift */; };
 		9D22BC202A12B2D8000E4728 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC1F2A12B2D8000E4728 /* Message.swift */; };
+		9D22BC222A12B434000E4728 /* ConversationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22BC212A12B434000E4728 /* ConversationsListView.swift */; };
 		9D61D64C2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D61D64B2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift */; };
 		9D61D64E2A0EBCE6008AEE38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D61D64D2A0EBCE6008AEE38 /* ContentView.swift */; };
 		9D61D6502A0EBCE7008AEE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D61D64F2A0EBCE7008AEE38 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		9D22BC1B2A12A84F000E4728 /* NotificationsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTab.swift; sourceTree = "<group>"; };
 		9D22BC1D2A12B274000E4728 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		9D22BC1F2A12B2D8000E4728 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		9D22BC212A12B434000E4728 /* ConversationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListView.swift; sourceTree = "<group>"; };
 		9D61D6482A0EBCE6008AEE38 /* SlideOutMenuSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenuSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D61D64B2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutMenuSwiftUIApp.swift; sourceTree = "<group>"; };
 		9D61D64D2A0EBCE6008AEE38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				9D7F04892A0F003600B976C0 /* MessagesView.swift */,
+				9D22BC212A12B434000E4728 /* ConversationsListView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				9D7F048C2A0F01DB00B976C0 /* User.swift in Sources */,
 				9D22BC1C2A12A84F000E4728 /* NotificationsTab.swift in Sources */,
 				9D61D64C2A0EBCE6008AEE38 /* SlideOutMenuSwiftUIApp.swift in Sources */,
+				9D22BC222A12B434000E4728 /* ConversationsListView.swift in Sources */,
 				9D61D65F2A0ECE57008AEE38 /* HomeView.swift in Sources */,
 				9D7F04912A0F082900B976C0 /* ProfileView.swift in Sources */,
 				9D22BC162A129911000E4728 /* TweetListView.swift in Sources */,
