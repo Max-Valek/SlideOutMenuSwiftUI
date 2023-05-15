@@ -22,7 +22,7 @@ struct BaseView: View {
         UITabBar.appearance().isHidden = true
     }
     
-    @State var currentTab: BaseTab = .notifications
+    @State var currentTab: BaseTab = .messages
     // offset for both drag gesture and showing menu
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
@@ -62,7 +62,7 @@ struct BaseView: View {
                             .navigationBarHidden(true)
                             .tag(BaseTab.notifications)
                         
-                        MessagesView()
+                        MessagesView(loggedInUser: loggedInUser, showMenu: $showMenu)
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
                             .tag(BaseTab.messages)

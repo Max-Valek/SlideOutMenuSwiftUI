@@ -58,7 +58,7 @@ extension SearchView {
                         .clipShape(Circle())
                 }
                 
-                // twitter logo
+                // search bar
                 HStack {
                     Image(systemName: "magnifyingglass")
                     Text("Search Twitter")
