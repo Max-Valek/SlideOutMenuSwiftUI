@@ -26,6 +26,9 @@ struct User: Identifiable {
     var likedTweets: [Tweet] = []
     
     var conversations: [Conversation] = []
+    
+    var allNotifications: [UserNotification] = []
+    var verifiedNotifications: [UserNotification] = []
 }
 
 // sample users
@@ -39,7 +42,8 @@ extension User {
             headerImage: nil,
             bio: "Owner of Twitter",
             location: "Twitter HQ",
-            conversations: Conversation.sampleConversations)
+            conversations: Conversation.sampleConversations,
+            allNotifications: UserNotification.sampleAll)
     
     static var doge: User =
         User(username: "doge",
