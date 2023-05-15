@@ -27,6 +27,7 @@ struct SearchView: View {
                 
                 header
                 
+                content
                 Spacer()
             }
             .foregroundColor(Color.theme.text)
@@ -78,10 +79,11 @@ extension SearchView {
             .padding(.vertical, 10)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
+                HStack(spacing: 24) {
                     tabs
                 }
                 .padding(.horizontal)
+                .padding(.top, 8)
             }
             
             Divider()
@@ -99,7 +101,7 @@ extension SearchView {
             ForEach(SearchTab.allCases, id: \.self) { tab in
                 VStack {
                     Text(tab.title)
-                        .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
+                        .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.darkGray)
                         .onTapGesture {
                             withAnimation(.easeIn(duration: 0.25)) {
                                 currentTab = tab
@@ -119,8 +121,23 @@ extension SearchView {
                 }
             }
             .font(.subheadline)
-            .fontWeight(.semibold)
-        
+            .fontWeight(.bold)
     }
 
+    // content
+    @ViewBuilder
+    private var content: some View {
+        switch currentTab {
+        case .forYou:
+            Text("For You")
+        case .trending:
+            Text("Trending")
+        case .news:
+            Text("News")
+        case .sports:
+            Text("Sports")
+        case .entertainment:
+            Text("Entertainment")
+        }
+    }
 }
