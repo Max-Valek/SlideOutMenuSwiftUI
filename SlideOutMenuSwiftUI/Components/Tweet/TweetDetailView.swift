@@ -24,6 +24,7 @@ struct TweetDetailView: View {
                 
                 ScrollView(.vertical) {
                     tweetTop
+                    tweetContent
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
@@ -103,5 +104,18 @@ extension TweetDetailView {
             }
 
         }
+    }
+    // tweet content
+    private var tweetContent: some View {
+        HStack {
+            Text(tweet.text)
+                .font(.headline)
+                .fontWeight(.semibold)
+            
+            Spacer(minLength: 0)
+        }
+        .padding(0)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical)
     }
 }
