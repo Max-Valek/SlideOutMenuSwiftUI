@@ -25,6 +25,12 @@ struct TweetDetailView: View {
                 ScrollView(.vertical) {
                     tweetTop
                     tweetContent
+                    tweetEngagements
+                    tweetButtons
+                    
+                    if !tweet.replies.isEmpty {
+                        TweetListView(tweetList: tweet.replies)
+                    }
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
@@ -118,4 +124,122 @@ extension TweetDetailView {
         .frame(maxWidth: .infinity)
         .padding(.vertical)
     }
+    // engagement info
+    private var tweetEngagements: some View {
+        VStack {
+            // time, date, views (sample)
+            HStack(alignment: .center, spacing: 4) {
+                Text("4:00 PM")
+                Text("•")
+                Text("5/15/23")
+                Text("•")
+                Text("0")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.theme.text)
+                Text("Views")
+                Spacer()
+            }
+            .font(.caption)
+            .foregroundColor(Color.theme.lightGray)
+            
+            Divider()
+            
+            // retweets, quotes, likes, bookmarks
+            HStack(spacing: 8) {
+                HStack(spacing: 4) {
+                    Text("\(tweet.usersReposted.count)")
+                        .foregroundColor(Color.theme.text)
+                        .fontWeight(.semibold)
+                    Text("Retweets")
+                }
+                // have to implement quotes
+                HStack(spacing: 4) {
+                    Text("0")
+                        .foregroundColor(Color.theme.text)
+                        .fontWeight(.semibold)
+                    Text("Quotes")
+                }
+                HStack(spacing: 4) {
+                    Text("\(tweet.usersLiked.count)")
+                        .foregroundColor(Color.theme.text)
+                        .fontWeight(.semibold)
+                    Text("Likes")
+                }
+                // have to implement bookmarks
+                HStack(spacing: 4) {
+                    Text("0")
+                        .foregroundColor(Color.theme.text)
+                        .fontWeight(.semibold)
+                    Text("Bookmarks")
+                }
+                
+                Spacer()
+            }
+            .font(.subheadline)
+            .foregroundColor(Color.theme.lightGray)
+            
+            Divider()
+        }
+    }
+    // tweet buttons
+    private var tweetButtons: some View {
+        VStack {
+            HStack {
+                // replies
+                Button {
+                } label: {
+                    HStack {
+                        Image(systemName: "bubble.left")
+                    }
+                }
+                
+                Spacer()
+                
+                // retweets
+                Button {
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                    }
+                }
+                
+                Spacer()
+                
+                // likes
+                Button {
+                } label: {
+                    HStack {
+                        Image(systemName: "heart")
+                    }
+                }
+                
+                Spacer()
+                
+                Button {
+                } label: {
+                    HStack {
+                        Image(systemName: "bookmark")
+                    }
+                }
+                
+                Spacer()
+                
+                // share
+                Button {
+                } label: {
+                    HStack {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+                }
+            }
+            .font(.headline)
+            .fontWeight(.semibold)
+            .foregroundColor(Color.theme.darkGray)
+            .padding(.horizontal, 24)
+            
+            Divider()
+        }
+    }
+
 }
