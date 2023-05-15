@@ -17,6 +17,7 @@ struct TweetListView: View {
             if !tweetList.isEmpty {
                 ForEach(tweetList) { tweet in
                     TweetView(tweet: tweet)
+                    
                     Divider()
                 }
             } else {

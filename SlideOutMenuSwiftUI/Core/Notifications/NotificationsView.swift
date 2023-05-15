@@ -133,7 +133,7 @@ extension NotificationsView {
                         .asymmetric(insertion: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing), removal: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing)) )
             case .mentions:
                 NotificationsListView(notifications: loggedInUser.mentionNotifications)
-                    .transition(.move(edge: .leading))
+                    .transition(.move(edge: .trailing))
             }
         }
     }

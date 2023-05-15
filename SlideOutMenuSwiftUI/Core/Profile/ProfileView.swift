@@ -14,6 +14,7 @@ struct ProfileView: View {
     @Namespace private var namespace
     @State private var currentTab: ProfileTab = .tweets
     @State private var previousTab: ProfileTab = .tweets
+    @State private var showHeader: Bool = true
     
     var body: some View {
         
