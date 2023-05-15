@@ -13,25 +13,29 @@ struct TweetView: View {
     
     var body: some View {
         
-        HStack(alignment: .top) {
-            
-            // author profile photo
-            authorImage
-            
-            // everything else
-            VStack(alignment: .leading, spacing: 8) {
-                // user info and ellipsis button
-                tweetTop
+        NavigationLink {
+            TweetDetailView(tweet: tweet)
+        } label: {
+            HStack(alignment: .top) {
                 
-                // tweet content
-                content
+                // author profile photo
+                authorImage
                 
-                // buttons
-                tweetButtons
+                // everything else
+                VStack(alignment: .leading, spacing: 8) {
+                    // user info and ellipsis button
+                    tweetTop
+                    
+                    // tweet content
+                    content
+                    
+                    // buttons
+                    tweetButtons
+                }
             }
+            .padding(.horizontal)
+            .padding(.vertical, 4)
         }
-        .padding(.horizontal)
-        .padding(.vertical, 4)
     }
 }
 
@@ -81,8 +85,9 @@ extension TweetView {
     }
     // tweet content
     private var content: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(tweet.text)
+                .multilineTextAlignment(.leading)
         }
     }
     // tweet buttons
