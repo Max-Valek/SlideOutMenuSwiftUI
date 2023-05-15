@@ -22,6 +22,8 @@ struct ConversationView: View {
                 header
                 
                 Spacer()
+                
+                messageTextField
             }
         }
         .foregroundColor(Color.theme.text)
@@ -68,5 +70,29 @@ extension ConversationView {
         .padding(.horizontal)
         .padding(.vertical, 8)
         .background(Color.theme.white.opacity(0.025))
+    }
+    
+    // new message text field
+    private var messageTextField: some View {
+        VStack {
+            Divider()
+            HStack(spacing: 20) {
+                Image(systemName: "photo")
+                    .font(.title3)
+                    .foregroundColor(Color.theme.text)
+                
+                Text("Start a message")
+                
+                Spacer()
+                
+                Image(systemName: "arrowtriangle.right.fill")
+                    .font(.title3)
+            }
+            .foregroundColor(Color.theme.lightGray)
+            .padding()
+            .background(Color.theme.twitterBlack, in: Capsule())
+            .padding(.horizontal)
+        }
+        .padding(.vertical, 8)
     }
 }
