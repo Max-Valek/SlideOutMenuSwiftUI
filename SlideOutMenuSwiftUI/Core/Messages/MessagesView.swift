@@ -12,6 +12,7 @@ struct MessagesView: View {
     // for testing
     let loggedInUser: User
     @Binding var showMenu: Bool
+    @State private var showMessagesSettings: Bool = false
     
     var body: some View {
         
@@ -19,12 +20,19 @@ struct MessagesView: View {
             Color.theme.black
                 .ignoresSafeArea()
             
+            // new message button
+            NewButtonView(icon: "envelope")
+            .zIndex(2.0)
+            
             VStack(spacing: 0) {
                 header
                 
                 conversations
             }
             .foregroundColor(Color.theme.text)
+        }
+        .fullScreenCover(isPresented: $showMessagesSettings) {
+            MessagesSettingsView(loggedInUser: loggedInUser)
         }
     }
 }
@@ -65,9 +73,15 @@ extension MessagesView {
                 
                 Spacer()
                 
-                // settings button
-                Image(systemName: "gearshape")
-                    .font(.title3)
+                Button {
+                    withAnimation {
+                        showMessagesSettings.toggle()
+                    }
+                } label: {
+                    // settings button
+                    Image(systemName: "gearshape")
+                        .font(.title3)
+                }
             }
             .padding(.horizontal)
             .padding(.vertical, 10)

@@ -21,6 +21,10 @@ struct HomeView: View {
             Color.theme.black
                 .ignoresSafeArea()
             
+            // new tweet button
+            NewButtonView(icon: "plus")
+            .zIndex(2.0)
+            
             VStack(spacing: 0) {
                 // header
                 header

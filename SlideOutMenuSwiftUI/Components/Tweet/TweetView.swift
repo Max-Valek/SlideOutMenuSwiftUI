@@ -13,9 +13,7 @@ struct TweetView: View {
     
     var body: some View {
         
-        NavigationLink {
-            TweetDetailView(tweet: tweet)
-        } label: {
+        
             HStack(alignment: .top) {
                 
                 // author profile photo
@@ -26,8 +24,12 @@ struct TweetView: View {
                     // user info and ellipsis button
                     tweetTop
                     
-                    // tweet content
-                    content
+                    NavigationLink {
+                        TweetDetailView(tweet: tweet)
+                    } label: {
+                        // tweet content
+                        content
+                    }
                     
                     // buttons
                     tweetButtons
@@ -35,7 +37,7 @@ struct TweetView: View {
             }
             .padding(.horizontal)
             .padding(.vertical, 4)
-        }
+        
     }
 }
 
