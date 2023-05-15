@@ -22,7 +22,7 @@ struct BaseView: View {
         UITabBar.appearance().isHidden = true
     }
     
-    @State var currentTab: BaseTab = .home
+    @State var currentTab: BaseTab = .search
     // offset for both drag gesture and showing menu
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
@@ -52,7 +52,7 @@ struct BaseView: View {
                             .navigationBarHidden(true)
                             .tag(BaseTab.home)
                         
-                        SearchView()
+                        SearchView(loggedInUser: loggedInUser, showMenu: $showMenu)
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarHidden(true)
                             .tag(BaseTab.search)
