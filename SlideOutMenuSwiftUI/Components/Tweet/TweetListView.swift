@@ -14,9 +14,13 @@ struct TweetListView: View {
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
-            ForEach(tweetList) { tweet in
-                TweetView(tweet: tweet)
-                Divider()
+            if !tweetList.isEmpty {
+                ForEach(tweetList) { tweet in
+                    TweetView(tweet: tweet)
+                    Divider()
+                }
+            } else {
+                Text("No Tweets Found")
             }
         }
     }

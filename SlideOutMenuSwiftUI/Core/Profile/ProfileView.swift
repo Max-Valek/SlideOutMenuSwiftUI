@@ -226,13 +226,13 @@ extension ProfileView {
     private var content: some View {
         switch currentTab {
         case .tweets:
-            Text("Tweets")
+            TweetListView(tweetList: user.tweets)
         case .replies:
-            Text("Replies")
+            TweetListView(tweetList: user.replies)
         case .media:
-            Text("Media")
+            TweetListView(tweetList: user.media)
         case .likes:
-            Text("Likes")
+            TweetListView(tweetList: user.likedTweets)
         }
     }
 }

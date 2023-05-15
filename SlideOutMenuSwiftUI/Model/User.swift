@@ -19,6 +19,11 @@ struct User: Identifiable {
     var location: String?
     var following: [User] = []
     var followers: [User] = []
+    
+    var tweets: [Tweet] = []
+    var replies: [Tweet] = []
+    var media: [Tweet] = []
+    var likedTweets: [Tweet] = []
 }
 
 // sample users
