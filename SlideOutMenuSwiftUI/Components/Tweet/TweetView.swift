@@ -68,8 +68,15 @@ extension TweetView {
             
             Spacer()
             
-            Image(systemName: "ellipsis")
-                .foregroundColor(Color.theme.darkGray)
+            Menu {
+                Button("Unfollow", action: {})
+                Button("Mute", action: {})
+                Button("Block", action: {})
+                Button("Report Tweet", action: {})
+            } label: {
+                Image(systemName: "ellipsis")
+                    .foregroundColor(Color.theme.darkGray)
+            }
         }
     }
     // tweet content

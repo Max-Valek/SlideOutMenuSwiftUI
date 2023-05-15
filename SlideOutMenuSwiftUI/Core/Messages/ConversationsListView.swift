@@ -41,6 +41,7 @@ struct ConversationsListView: View {
                         .clipShape(Circle())
                     
                     VStack {
+                        // name and username (will have to change for groups)
                         HStack {
                             Text(convo.users[0].displayName)
                                 .font(.headline)
@@ -50,6 +51,7 @@ struct ConversationsListView: View {
                             Spacer()
                         }
                         
+                        // description (will have to change)
                         HStack {
                             Text("Latest message from @\(convo.users[0].username)")
                             Spacer()
