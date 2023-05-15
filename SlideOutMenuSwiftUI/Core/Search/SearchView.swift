@@ -9,28 +9,44 @@ import SwiftUI
 
 struct SearchView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     // for testing
     let loggedInUser: User
     @Binding var showMenu: Bool
     @Namespace private var namespace
+    
     @State private var currentTab: SearchTab = .forYou
     @State private var showExploreSettings: Bool = false
+    @State private var searching: Bool = false
+    @State private var searchText: String = ""
     
     var body: some View {
         ZStack {
             Color.theme.black
                 .ignoresSafeArea()
             
-            // new tweet button
-            NewButtonView(icon: "plus")
-            .zIndex(2.0)
-            
-            VStack(spacing: 0) {
-                header
-                content
-                Spacer()
+            if searching {
+                VStack {
+                    // searching header
+                    searchingHeader
+                    recentSearchesTitle
+                    Spacer()
+                }
+                .foregroundColor(Color.theme.text)
+            } else {
+                // new tweet button
+                NewButtonView(icon: "plus")
+                .zIndex(2.0)
+                
+                VStack(spacing: 0) {
+                    header
+                    content
+                    Spacer()
+                }
+                .foregroundColor(Color.theme.text)
             }
-            .foregroundColor(Color.theme.text)
+            
         }
         .fullScreenCover(isPresented: $showExploreSettings) {
             ExploreSettingsView(loggedInUser: loggedInUser)
@@ -40,7 +56,7 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(loggedInUser: User.elon, showMenu: .constant(false))
+        SearchView(loggedInUser: User.elon, showMenu: .constant(true))
     }
 }
 
@@ -73,6 +89,9 @@ extension SearchView {
                 .padding(.vertical, 8)
                 .frame(maxWidth: .infinity)
                 .background(Color.theme.twitterBlack, in: Capsule())
+                .onTapGesture {
+                    searching.toggle()
+                }
                 
                 // settings button
                 Button {
@@ -149,5 +168,47 @@ extension SearchView {
                 Text("Entertainment")
             }
         }
+    }
+    
+    // when searching
+    
+    // search header
+    private var searchingHeader: some View {
+        HStack {
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(Color.theme.lightGray)
+                TextField("Search Twitter", text: $searchText)
+                    .foregroundColor(Color.theme.lightGray)
+                Spacer(minLength: 0)
+            }
+            .tint(Color.theme.lightGray)
+            .padding(8)
+            .background(Color.theme.twitterBlack, in: Capsule())
+            
+            Button("Cancel") {
+                searching.toggle()
+                dismiss()
+            }
+            .tint(Color.theme.text)
+            .padding(.horizontal)
+        }
+        .padding(.horizontal)
+    }
+    // recent searches
+    private var recentSearchesTitle: some View {
+        HStack {
+            Text("Recent Searches")
+                .font(.headline)
+            
+            Spacer()
+            
+            Text("X")
+                .font(.subheadline)
+                .padding(8)
+                .background(Color.theme.twitterBlack, in: Circle())
+        }
+        .padding(.horizontal)
+        .padding(.vertical)
     }
 }
