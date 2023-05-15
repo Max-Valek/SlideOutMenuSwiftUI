@@ -15,6 +15,7 @@ struct TweetView: View {
         
         HStack(alignment: .top) {
             
+            // author profile photo
             VStack {
                 Image(tweet.author.profileImage ?? "default")
                     .resizable()
@@ -24,16 +25,25 @@ struct TweetView: View {
             }
             .frame(width: 50)
             
+            // everything else
             VStack(alignment: .leading, spacing: 8) {
                 // user info and ellipsis button
                 HStack {
                     Text(tweet.author.displayName)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                    
                     Text("@\(tweet.author.username)")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.theme.darkGray)
                     
                     Spacer()
                     
                     Image(systemName: "ellipsis")
+                        .foregroundColor(Color.theme.darkGray)
                 }
+                
                 
                 // tweet content
                 VStack {
@@ -94,11 +104,13 @@ struct TweetView: View {
                         }
                     }
                 }
-                .font(.caption)
+                .font(.subheadline)
                 .fontWeight(.semibold)
-                .foregroundColor(Color.theme.lightGray)
+                .foregroundColor(Color.theme.darkGray)
             }
         }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
     }
 }
 
