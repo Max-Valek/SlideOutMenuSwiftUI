@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct TweetListView: View {
+    
+    let tweetList: [Tweet]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            ForEach(tweetList) { tweet in
+                TweetView(tweet: tweet)
+                Divider()
+            }
+        }
     }
 }
 
 struct TweetListView_Previews: PreviewProvider {
     static var previews: some View {
-        TweetListView()
+        TweetListView(tweetList: Tweet.allTweets)
     }
 }

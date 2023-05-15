@@ -150,7 +150,7 @@ extension HomeView {
             case .forYou:
                 VStack {
                     Spacer()
-                    TweetView(tweet: Tweet.allTweets[0])
+                    TweetListView(tweetList: Tweet.sampleForYou)
                     Spacer()
                 }
                 //.frame(width: getRect().width, height: getRect().height)
@@ -160,7 +160,7 @@ extension HomeView {
             case .following:
                 VStack {
                     Spacer()
-                    Text("Following")
+                    TweetListView(tweetList: Tweet.sampleFollowing)
                     Spacer()
                 }
                 //.frame(width: getRect().width, height: getRect().height)
