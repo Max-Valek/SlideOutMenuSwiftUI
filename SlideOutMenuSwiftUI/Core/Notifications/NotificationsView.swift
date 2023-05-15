@@ -120,13 +120,15 @@ extension NotificationsView {
     // content
     @ViewBuilder
     private var content: some View {
-        switch currentTab {
-        case .all:
-            Text("All")
-        case .verified:
-            Text("Verified")
-        case .mentions:
-            Text("Mentions")
+        ScrollView(.vertical, showsIndicators: false) {
+            switch currentTab {
+            case .all:
+                Text("All")
+            case .verified:
+                Text("Verified")
+            case .mentions:
+                Text("Mentions")
+            }
         }
     }
 }

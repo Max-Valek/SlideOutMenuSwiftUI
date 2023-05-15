@@ -120,17 +120,19 @@ extension SearchView {
     // content
     @ViewBuilder
     private var content: some View {
-        switch currentTab {
-        case .forYou:
-            Text("For You")
-        case .trending:
-            Text("Trending")
-        case .news:
-            Text("News")
-        case .sports:
-            Text("Sports")
-        case .entertainment:
-            Text("Entertainment")
+        ScrollView(.vertical, showsIndicators: false) {
+            switch currentTab {
+            case .forYou:
+                Text("For You")
+            case .trending:
+                Text("Trending")
+            case .news:
+                Text("News")
+            case .sports:
+                Text("Sports")
+            case .entertainment:
+                Text("Entertainment")
+            }
         }
     }
 }

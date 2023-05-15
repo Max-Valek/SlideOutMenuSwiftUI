@@ -21,7 +21,8 @@ struct MessagesView: View {
             
             VStack(spacing: 0) {
                 header
-                Spacer()
+                
+                conversations
             }
             .foregroundColor(Color.theme.text)
         }
@@ -89,6 +90,13 @@ extension MessagesView {
         }
         .padding(0)
         .background(Color.theme.white.opacity(0.025))
+    }
+    // conversations
+    private var conversations: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            Text("Conversations")
+            Spacer()
+        }
     }
 
 }

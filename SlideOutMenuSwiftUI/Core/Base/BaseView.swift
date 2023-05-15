@@ -22,7 +22,7 @@ struct BaseView: View {
         UITabBar.appearance().isHidden = true
     }
     
-    @State var currentTab: BaseTab = .search
+    @State var currentTab: BaseTab = .messages
     // offset for both drag gesture and showing menu
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
