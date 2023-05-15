@@ -22,6 +22,12 @@ struct TweetDetailView: View {
                 
                 header
                 
+                ScrollView(.vertical) {
+                    tweetTop
+                }
+                .padding(.horizontal)
+                .padding(.top, 8)
+                
                 Spacer()
             }
         }
@@ -61,5 +67,41 @@ extension TweetDetailView {
         .padding(.horizontal)
         .padding(.vertical, 8)
         .background(Color.theme.white.opacity(0.025))
+    }
+    // tweet top (user info, ellipsis button)
+    private var tweetTop: some View {
+        HStack(spacing:16) {
+            Image(tweet.author.profileImage ?? "default")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 40, height: 40)
+                .clipShape(Circle())
+            
+            VStack(alignment: .leading) {
+                HStack(spacing: 4) {
+                    Text(tweet.author.displayName)
+                        .font(.headline)
+                    if tweet.author.isVerified {
+                        Image(systemName: "checkmark.seal.fill")
+                            .font(.caption)
+                            .foregroundColor(Color.theme.blue)
+                    }
+                }
+                
+                Text("@\(tweet.author.username)")
+                    .font(.subheadline)
+                    .foregroundColor(Color.theme.lightGray)
+            }
+            
+            Spacer()
+            
+            Button {
+                
+            } label: {
+                Image(systemName: "ellipsis")
+                    .foregroundColor(Color.theme.lightGray)
+            }
+
+        }
     }
 }
