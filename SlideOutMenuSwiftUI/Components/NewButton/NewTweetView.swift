@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewTweetView: View {
     
+    var loggedInUser: User
+    @State private var inputText: String = ""
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -19,6 +21,16 @@ struct NewTweetView: View {
             VStack {
                 header
                 
+                HStack(spacing: 10) {
+                    Image(loggedInUser.profileImage ?? "default")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                    
+                    TextField("What's Happening?", text: $inputText)
+                }
+                .padding()
                 Spacer()
             }
         }
@@ -28,7 +40,7 @@ struct NewTweetView: View {
 
 struct NewTweetView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTweetView()
+        NewTweetView(loggedInUser: User.elon)
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 // Button on the bottom right of the screen (new tweet/message)
 struct NewButtonView: View {
     
+    let loggedInUser: User
     @State private var showNewTweet: Bool = false
     @State private var showNewMessage: Bool = false
     let icon: String
@@ -37,7 +38,7 @@ struct NewButtonView: View {
             .padding(.bottom)
         }
         .fullScreenCover(isPresented: $showNewTweet) {
-            NewTweetView()
+            NewTweetView(loggedInUser: loggedInUser)
         }
         .sheet(isPresented: $showNewMessage) {
             NewMessageView()
@@ -47,6 +48,6 @@ struct NewButtonView: View {
 
 struct NewButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        NewButtonView(icon: "plus")
+        NewButtonView(loggedInUser: User.elon, icon: "plus")
     }
 }

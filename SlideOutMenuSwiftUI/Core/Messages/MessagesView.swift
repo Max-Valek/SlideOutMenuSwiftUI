@@ -21,7 +21,7 @@ struct MessagesView: View {
                 .ignoresSafeArea()
             
             // new message button
-            NewButtonView(icon: "envelope")
+            NewButtonView(loggedInUser: loggedInUser, icon: "envelope")
             .zIndex(2.0)
             
             VStack(spacing: 0) {

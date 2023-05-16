@@ -24,7 +24,7 @@ struct NotificationsView: View {
                 .ignoresSafeArea()
             
             // new tweet button
-            NewButtonView(icon: "plus")
+            NewButtonView(loggedInUser: loggedInUser, icon: "plus")
             .zIndex(2.0)
             
             VStack(spacing: 0) {
