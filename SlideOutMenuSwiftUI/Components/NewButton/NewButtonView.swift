@@ -40,7 +40,7 @@ struct NewButtonView: View {
         .fullScreenCover(isPresented: $showNewTweet) {
             NewTweetView(loggedInUser: loggedInUser)
         }
-        .sheet(isPresented: $showNewMessage) {
+        .fullScreenCover(isPresented: $showNewMessage) {
             NewMessageView()
         }
     }

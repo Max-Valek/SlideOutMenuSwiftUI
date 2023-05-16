@@ -46,6 +46,8 @@ struct User: Identifiable {
 // sample users
 extension User {
     
+    static var sampleUsers: [User] = [User.elon, User.doge, User.defaultUser]
+    
     static var elon: User =
         User(username: "elon",
             displayName: "Elon Musk",
