@@ -14,7 +14,7 @@ struct NotificationsView: View {
     @Binding var showMenu: Bool
     @Namespace private var namespace
     @State private var currentTab: NotificationsTab = .all
-    @State private var previousTab: NotificationsTab = .all
+    @State private var previousTab: NotificationsTab? = nil
     @State private var showNotificationsSettings: Bool = false
     
     var body: some View {
@@ -109,10 +109,13 @@ extension NotificationsView {
                 VStack {
                     Text(tab.title)
                         .foregroundColor(currentTab == tab ? Color.theme.text : Color.theme.lightGray)
+                        .background(previousTab == tab ? Color.theme.blue : Color.clear)
                         .onTapGesture {
-                            withAnimation(.easeIn(duration: 0.25)) {
+                            if currentTab != tab {
                                 previousTab = currentTab
-                                currentTab = tab
+                                withAnimation(.easeIn(duration: 0.25)) {
+                                    currentTab = tab
+                                }
                             }
                         }
                     // tab underline
@@ -144,12 +147,23 @@ extension NotificationsView {
                     .transition(.move(edge: .leading))
             case .verified:
                 NotificationsListView(notifications: loggedInUser.verifiedNotifications)
-                    .transition(
-                        .asymmetric(insertion: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing), removal: .move(edge: (previousTab.index > currentTab.index) ? .leading : .trailing)) )
+                    .transition(.asymmetric(insertion: .move(edge: getInsertion()), removal: .move(edge: getRemoval())))
             case .mentions:
                 NotificationsListView(notifications: loggedInUser.mentionNotifications)
                     .transition(.move(edge: .trailing))
             }
         }
+    }
+    
+    private func getInsertion() -> Edge {
+        guard let prev = previousTab else { return .trailing }
+        if prev == .all { return .trailing }
+        return .leading
+    }
+    
+    private func getRemoval() -> Edge {
+        print(currentTab.title)
+        if currentTab == .mentions { return .leading }
+        return .trailing
     }
 }
